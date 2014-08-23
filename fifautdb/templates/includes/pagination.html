@@ -1,0 +1,36 @@
+{% if is_paginated %}
+  <div class="pagination-centered">
+    <ul class="pagination">
+      {% if page_obj.has_previous %}
+        <li class="arrow"><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+      {% endif %}
+      {% for page in page_obj.paginator.page_range %}
+        {% if forloop.first %}
+          <li {% if forloop.counter == page_obj.number %}class="current"{% endif %}><a href="?page={{ page }}">{{ page }}
+        {% elif forloop.last %}
+          <li {% if forloop.counter == page_obj.number %}class="current"{% endif %}><a href="?page={{ page }}">{{ page }}</a></li>
+        {% elif forloop.counter == page_obj.number %}
+          <li class="current"><a href="?page={{ page }}">{{ page_obj.number }}</a></li>
+        {% elif forloop.counter == page_obj.number|add:"-1" %}
+          {% if forloop.counter == 2 %}
+          {% else %}
+            <li class="unavailable"><a href="">&hellip;</a></li>
+          {% endif %}
+          <li><a href="?page={{ page }}">{{ page }}</a></li>
+        {% elif forloop.counter == page_obj.number|add:"1" %}
+          <li><a href="?page={{ page }}">{{ page }}</a></li>
+          {% if page_obj.paginator.num_pages == page_obj.number|add:"2" %}
+          {% else %}
+            <li class="unavailable"><a href="">&hellip;</a></li>
+          {% endif %}
+        {% elif forloop.counter < page_obj.number or forloop.counter > page_obj.number %}
+        {% else %}
+          <li><a href="?page={{ page }}">{{ page }}</a></li>
+        {% endif %}
+      {% endfor %}
+      {% if page_obj.has_next %}
+        <li class="arrow"><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+      {% endif %}
+    </ul>
+  </div>
+{% endif %}

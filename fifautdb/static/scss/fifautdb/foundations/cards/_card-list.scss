@@ -1,0 +1,8 @@
+.card-list {
+    margin-left : 0;
+	& > li {
+		display: inline-block;
+	}
+}
+
+#players .mix { display : none; }

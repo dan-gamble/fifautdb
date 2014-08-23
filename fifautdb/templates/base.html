@@ -1,45 +1,93 @@
 {% load staticfiles %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>
+    {% block pageTitle %}
+      Page title block, this needs changing brah
+    {% endblock %}
+  </title>
+  <link href='http://fonts.googleapis.com/css?family=Bitter:400,700,400italic' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
 
-<!DOCTYPE html>
-<html>
-    <head>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  {% block headstyles %}
+    <link href="{% static 'css/screen.css' %}" rel="stylesheet" type="text/css">
+    <script src="{% static 'js/modernizr.js' %}"></script>
+  {% endblock %}
+</head>
+<body>
 
-        <meta charset="utf-8">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        {# <meta name="keywords" content="{% block meta_keywords %}{% meta_keywords %}{% endblock %}"> #}
-        <meta name="description" content="{% block meta_description %}{% endblock meta_description %}">
-        <meta name="robots" content="{% block meta_robots %}{% endblock meta_robots %}">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-        <link href="{% static 'css/screen.css' %}" rel="stylesheet" type="text/css">
+<div id="top-level-nav">
+  <div class="row">
+    <div class="large-12 columns">
+      <nav class="right">
+        <ul class="inline-list">
+          <li><a href="{% url 'index' %}">Home</a></li>
+          <li><a href="{% url 'clubs:index' %}">Clubs</a></li>
+          <li><a href="{% url 'leagues:index' %}">Leagues</a></li>
+          <li><a href="{% url 'nations:index' %}">Nations</a></li>
+          <li><a href="{% url 'players:index' %}">Players</a></li>
+        </ul>
+      </nav>
+    </div> <!-- 'large-12 columns' -->
+  </div> <!-- 'row' -->
+</div> <!-- 'id="top-level-nav"' -->
 
-        <title>{% block title %}{% endblock title %}</title>
+<div id="brand">
+  <div class="row">
+    <div class="large-3 columns">
+      <img alt="" src="http://placehold.it/233x96">
+    </div> <!-- 'large-4 columns' -->
+    <div class="large-9 columns">
+      <img alt="" src="http://placehold.it/758x96">
+    </div> <!-- 'large-8 columns' -->
+  </div> <!-- 'row' -->
+</div> <!-- 'id="brand"' -->
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
+<div id="sub-nav">
+  <div class="row">
+    <div class="large-12 columns">
+      <nav>
+        <ul class="inline-list">
+          <li><a href="{% url 'index' %}">Home</a></li>
+          <li><a href="{% url 'clubs:index' %}">Clubs</a></li>
+          <li><a href="{% url 'leagues:index' %}">Leagues</a></li>
+          <li><a href="{% url 'nations:index' %}">Nations</a></li>
+          <li><a href="{% url 'players:index' %}">Players</a></li>
+        </ul>
+      </nav>
+    </div> <!-- 'large-12 columns' -->
+  </div> <!-- 'row' -->
+</div> <!-- 'id="sub-nav"' -->
 
-        {% block extra_styles %}{% endblock %}
-        {% block head_js %}{% endblock %}
+<div id="content">
 
-        <link rel="shortcut icon" href="/static/img/favicon.png" />
-        <link rel="apple-touch-icon" href="/static/img/homescreen.png">
+  <div class="row">
+    <div class="large-12 columns">
+      <h1>
+        {% block pageHeading %}
+          Base block, this needs changing brah
+        {% endblock %}
+      </h1>
+    </div> <!-- 'large-12 columns' -->
+  </div> <!-- 'row' -->
 
-        <!--[if lt IE 9]>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+  <div class="row">
 
-    </head>
+    {% block content %}
 
-    <body class="{% block body_class %}{% endblock body_class %}">
-        {% block primary_content %}
-            Hey :)
-        {% endblock primary_content %}
-        {% block end_js %}{% endblock %}
-    </body>
+    {% endblock %}
 
-    <script src="{% static 'js/foundation/foundation.js' %}"></script>
-    <script src="{% static 'js/foundation/foundation.equalizer.js' %}"></script>
+  </div> <!-- 'row' -->
 
-    <script>
-        $(document).foundation();
-    </script>
+</div><!-- 'id="content"' -->
 
+<script src="{% static 'js/foundation.min.js' %}"></script>
+<script type="text/javascript">
+  $(document).foundation();
+</script>
+
+</body>
 </html>

@@ -1,0 +1,77 @@
+<div class="logo-block">
+  <a href="/">Fifa UTDB</a>
+</div>
+<ul class="tabs site-nav side-nav" data-tab>
+  <li class="active"><a href="#homeSubNav"><i class="fa fa-home fa-2x"></i></a></li>
+  <li><a href="#playersSubNav"><i class="fa fa-user fa-2x"></i></a></li>
+  <li><a href="#squadsSubNav"><i class="fa fa-users fa-2x"></i></a></li>
+  <li><a href="#buildersSubNav"><i class="fa fa-wrench fa-2x"></i></a></li>
+  {% if user.is_staff %}
+    <li><a href="#adminSubNav"><i class="fa fa-key fa-2x"></i></a></li>
+  {% endif %}
+  <li data-tooltip class="tip-right" title="Shortlist"><a href="#"><i class="fa fa-list fa-2x"></i></a></li>
+</ul>
+
+<div class="tabs-content">
+  <div class="content active" id="homeSubNav">
+    <ul class="side-nav">
+      <li class="header"><span>Home</span></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/forum">Forum</a></li>
+      <li><a href="#">Advice</a></li> <!-- Maybe a private forum where poster + 'advice givers' can see it -->
+      <li class="header"><span>Guides</span></li>
+      <li><a href="#">View Guides</a></li>
+      <li><a href="#">Create Guide</a></li>
+      <li class="header"><span>Social</span></li>
+      <li><a href="#"><i class="fa fa-twitter"></i> Twitter</a></li>
+      <li><a href="#"><i class="fa fa-facebook"></i> Facebook</a></li>
+    </ul>
+  </div>
+  <div class="content" id="playersSubNav">
+    <ul class="side-nav">
+      <li class="header"><span>Players</span></li>
+      <li><a href="#">Player Search</a></li>
+      <li><a href="#">Create a player</a></li>
+      <li><a href="#">Pack Opener</a></li>
+      <li class="header"><span>Clubs</span></li>
+      <li><a href="#">Club Search</a></li>
+      <li class="header"><span>Leagues</span></li>
+      <li><a href="#">League Search</a></li>
+      <li class="header"><span>Nations</span></li>
+      <li><a href="#">Nation Search</a></li>
+    </ul>
+  </div>
+  <div class="content" id="squadsSubNav">
+    <ul class="side-nav">
+      <li class="header"><span>Squads</span></li>
+      <li><a href="#">Squad Search</a></li>
+      <li class="header"><span>Latest EA Squads</span></li>
+      <li><a href="">TOTW 1</a></li>
+      <li><a href="">TOTW 2</a></li>
+      <li><a href="">TOTW 3</a></li>
+      <li><a href="">TOTW 4</a></li>
+      <li><a href="">TOTW 5</a></li>
+      <li><a href="">All EA Squads</a></li>
+    </ul>
+  </div>
+  <div class="content" id="buildersSubNav">
+    <ul class="side-nav">
+      <li class="header"><span>Builder</span></li>
+      <li><a href="#">Squad Builder</a></li>
+      <li><a href="#">Legacy Squad Builder</a></li>
+      <li><a href="#">Build me a squad!</a></li>
+    </ul>
+  </div>
+  <div class="content" id="adminSubNav">
+    <ul class="side-nav">
+      <li class="header"><span>Admin</span></li>
+      <li><a href="/admin">Home</a></li>
+      <li class="header"><span>Players</span></li>
+      <li><a href="#">Create</a></li>
+      <li class="header"><span>Users</span></li>
+      <li><a href="#">Create</a></li>
+      <li><a href="#">Edit</a></li>
+      <li><a href="#">Delete</a></li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+  <div class="large-12 columns">
+
+    <table class="large-12">
+      <thead>
+        <tr>
+          <th>League</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        {% for league in league_list %}
+          <tr>
+            <td>
+              <img alt="" src="{% static 'img/leagues/' %}{{ league.asset_id }}.png" width="50">
+              <a href="{{ league.get_absolute_url }}">{{ league.name_abbr15 }}</a>
+            </td>
+          </tr>
+        {% endfor %}
+
+      </tbody>
+    </table>
+
+  </div> <!-- large-12 columns -->
+
+
+{% endblock %}

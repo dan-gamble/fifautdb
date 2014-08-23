@@ -32,23 +32,25 @@ USE_TZ = True
 MEDIA_ROOT = os.path.join(SITE_ROOT, 'media')
 MEDIA_URL = '/media/'
 
-STATIC_ROOT = os.path.join(SITE_ROOT, 'assets')
+STATIC_ROOT = ""
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, 'static'),
 )
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 
-
 # Note: This key should only be used for development and testing.
 SECRET_KEY = r"ur97rr4qrrv&fz7egjn7vx#ohgb-r6thho%qn#v#t!@fez507u"
 
-
 TEMPLATE_DIRS = (
-    os.path.join(SITE_ROOT, "templates"),
+    os.path.join(SITE_ROOT, 'templates'),
+)
+TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -75,7 +77,6 @@ PASSWORD_HASHERS = (
 
 ROOT_URLCONF = 'fifautdb.urls'
 
-
 DJANGO_APPS = (
     # Default Django apps:
     'django.contrib.auth',
@@ -99,7 +100,10 @@ THIRD_PARTY_APPS = (
 
 # Apps specific for this project go here.
 LOCAL_APPS = (
-    'apps.app',
+    'apps.clubs',
+    'apps.leagues',
+    'apps.nations',
+    'apps.players',
 )
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS

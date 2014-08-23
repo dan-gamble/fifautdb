@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+  <div class="large-12 columns">
+
+    {% include "includes/pagination.html" %}
+
+    <table class="large-12">
+      <thead>
+        <tr>
+          <th>Nation</th>
+          <th>Leagues</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for nation in nation_list %}
+
+          <tr>
+            <td>
+              <img alt="" src="{% static 'img/nations/' %}{{ nation.asset_id }}.png" width="30">
+              <a href="{{ nation.get_absolute_url }}">{{ nation.name }}</a> ({{ nation.name_abbr3 }})
+            </td>
+            <td>
+              {{ nation.leagues|length }}
+            </td>
+          </tr>
+
+        {% endfor %}
+      </tbody>
+    </table>
+
+    {% include "includes/pagination.html" %}
+
+  </div> <!-- large-12 columns -->
+
+{% endblock %}

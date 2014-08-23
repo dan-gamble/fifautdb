@@ -1,0 +1,15 @@
+{% include "players/includes/pagination.html" %}
+
+<ul class="card-list">
+  {% for player in players %}
+    <li>
+      <a href="{{ player.get_absolute_url }}">
+        {% include "players/includes/player_card.html" %}
+      </a>
+    </li>
+  {% empty %}
+    <li>No players!</li>
+  {% endfor %}
+</ul>
+
+{% include "players/includes/pagination.html" %}

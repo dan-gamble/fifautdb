@@ -1,0 +1,49 @@
+{% load staticfiles %}
+<div class="card-container">
+  <div class="ut-card {{ player.card_colour }}">
+    <div class="card-workrates">
+      <div class="wr1
+          {% if player.workrate_att == 'Low' %}
+            wr-low
+          {% elif player.workrate_att == 'Medium' %}
+            wr-med
+          {% else %}
+            wr-high
+          {% endif %}
+      "></div>
+      <div class="wr2
+          {% if player.workrate_def == 'Low' %}
+          wr-low
+          {% elif player.workrate_def == 'Medium' %}
+          wr-med
+          {% else %}
+          wr-high
+          {% endif %}
+      "></div>
+    </div>
+    <div class="card-rating">{{ player.overall_rating }}</div>
+    <div class="card-name">{{ player.card_name }}</div>
+    <div class="card-position">{{ player.position }}</div>
+    <div class="card-nation">
+      <img src="{% static 'img/nations/' %}{{ player.nation_id }}.png" height="16" width="26">
+    </div>
+    <div class="card-club">
+      <img src="{% static 'img/clubs/' %}{{ player.club.asset_id }}.png" height="27" width="27">
+    </div>
+    <div class="card-picture">
+      <img src="{% static 'img/players/' %}{{ player.asset_id }}.png" height="74" width="74">
+    </div>
+    <div class="card-skill">
+      S/M: {{ player.skill_moves }} <i class="fa fa-star"></i>
+    </div>
+    <div class="card-foot">
+      W/F: {{ player.weak_foot }} <i class="fa fa-star"></i>
+    </div>
+    <div class="card-attr card-attr1">{{ player.card_att1 }} {{ player.att_1_label }}</div>
+    <div class="card-attr card-attr2">{{ player.card_att2 }} {{ player.att_2_label }}</div>
+    <div class="card-attr card-attr3">{{ player.card_att3 }} {{ player.att_3_label }}</div>
+    <div class="card-attr card-attr4">{{ player.card_att4 }} {{ player.att_4_label }}</div>
+    <div class="card-attr card-attr5">{{ player.card_att5 }} {{ player.att_5_label }}</div>
+    <div class="card-attr card-attr6">{{ player.card_att6 }} {{ player.att_6_label }}</div>
+  </div>
+</div>

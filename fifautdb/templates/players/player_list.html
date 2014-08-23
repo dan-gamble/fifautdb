@@ -1,0 +1,177 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <div class="large-12 columns">
+
+  {{ skill_moves }}
+
+    <dl class="sub-nav">
+      <dt>Position:</dt>
+      {% with 'all att mid def gk' as player_pos  %}
+        {% for pp in player_pos.split %}
+          {% cycle 'All' 'Attackers' 'Midfielders' 'Defenders' 'Goalkeepers' as player_pos_name silent %}
+          {% if player_pos == pp %}
+            <dd class="active">
+              {% else %}
+            <dd>
+          {% endif %}
+        <a href="{% url 'players:index_filter' pp card_type|default:'all' nation|default:'all' league|default:'all' att_workrate|default:'all' def_workrate|default:'all' skill_move|default:'all' weak_foot|default:'all' sort_by|default:'ovr' %}">
+          {{ player_pos_name }}
+        </a>
+        </dd>
+        {% endfor %}
+      {% endwith %}
+    </dl>
+
+    <dl class="sub-nav">
+      <dt>Card Type:</dt>
+      {% with 'all if gold silver bronze' as card_types  %}
+        {% for ct in card_types.split %}
+          {% cycle 'All' 'Inform' 'Gold' 'Silver' 'Bronze' as card_type_name silent %}
+          {% if card_type == ct %}
+            <dd class="active">
+              {% else %}
+            <dd>
+          {% endif %}
+        <a href="{% url 'players:index_filter' player_pos|default:'all' ct nation|default:'all' league|default:'all' att_workrate|default:'all' def_workrate|default:'all' skill_move|default:'all' weak_foot|default:'all' sort_by|default:'ovr' %}">
+          {{ card_type_name }}
+        </a>
+        </dd>
+        {% endfor %}
+      {% endwith %}
+    </dl>
+
+    <dl class="sub-nav">
+      <dt>Nation:</dt>
+      {% for nation_item in nations %}
+        {% if nation == nation_item.slug %}
+          <dd class="active">
+        {% else %}
+          <dd>
+        {% endif %}
+        <a href="{% url 'players:index_filter' player_pos|default:'all' card_type|default:'all' nation_item.slug league|default:'all' att_workrate|default:'all' def_workrate|default:'all' skill_move|default:'all' weak_foot|default:'all' sort_by|default:'ovr' %}">
+        {{ nation_item.name }}
+        </a>
+        </dd>
+      {% endfor %}
+    </dl>
+
+    <dl class="sub-nav">
+      <dt>League:</dt>
+      {% with 'superliga campeonato-brasileiro eredivisie barclays-premier-league' as leagues  %}
+        {% for lea in leagues.split %}
+          {% cycle 'Superliga' 'Liga Do Brasil' 'Eredivisie' 'BPL' as leagues_name silent %}
+          {% if league == lea %}
+            <dd class="active">
+              {% else %}
+            <dd>
+          {% endif %}
+        <a href="{% url 'players:index_filter' player_pos|default:'all' card_type|default:'all' nation|default:'all' lea att_workrate|default:'all' def_workrate|default:'all' skill_move|default:'all' weak_foot|default:'all' sort_by|default:'ovr' %}">
+          {{ leagues_name }}
+        </a>
+        </dd>
+        {% endfor %}
+      {% endwith %}
+    </dl>
+
+    <dl class="sub-nav">
+      <dt>Attacking Workrate:</dt>
+      {% with 'high medium low' as att_workrates  %}
+        {% for att in att_workrates.split %}
+          {% cycle 'High' 'Medium' 'Low' as att_workrates_name silent %}
+          {% if att_workrate == att %}
+            <dd class="active">
+              {% else %}
+            <dd>
+          {% endif %}
+        <a href="{% url 'players:index_filter' player_pos|default:'all' card_type|default:'all' nation|default:'all' league|default:'all' att def_workrate|default:'all' skill_move|default:'all' weak_foot|default:'all' sort_by|default:'ovr' %}">
+          {{ att_workrates_name }}
+        </a>
+        </dd>
+        {% endfor %}
+      {% endwith %}
+    </dl>
+
+    <dl class="sub-nav">
+      <dt>Defending Workrate:</dt>
+      {% with 'high medium low' as def_workrates  %}
+        {% for def in def_workrates.split %}
+          {% cycle 'High' 'Medium' 'Low' as def_workrates_name silent %}
+          {% if def_workrate == def %}
+            <dd class="active">
+              {% else %}
+            <dd>
+          {% endif %}
+        <a href="{% url 'players:index_filter' player_pos|default:'all' card_type|default:'all' nation|default:'all' league|default:'all' att_workrate|default:'all' def skill_move|default:'all' weak_foot|default:'all' sort_by|default:'ovr' %}">
+          {{ def_workrates_name }}
+        </a>
+        </dd>
+        {% endfor %}
+      {% endwith %}
+    </dl>
+
+    <dl class="sub-nav">
+      <dt>Skill Moves:</dt>
+      {% for skill_move_item in skill_moves %}
+        {% if skill_move_item.skill_moves == skill_move %}
+          <dd class="active">
+        {% else %}
+          <dd>
+        {% endif %}
+        <a href="{% url 'players:index_filter' player_pos|default:'all' card_type|default:'all' nation|default:'all' league|default:'all' att_workrate|default:'all' def_workrate|default:'all' skill_move_item.skill_moves weak_foot|default:'all' sort_by|default:'ovr' %}">
+          {{ skill_move_item.skill_moves }}
+        </a>
+      </dd>
+      {% endfor %}
+    </dl>
+
+    <dl class="sub-nav">
+      <dt>Weak Foot:</dt>
+      {% with '1 2 3 4 5' as weak_foots  %}
+        {% for wf in weak_foots.split %}
+          {% cycle '1' '2' '3' '4' '5' as weak_foots_name silent %}
+          {% if weak_foot == wf %}
+            <dd class="active">
+              {% else %}
+            <dd>
+          {% endif %}
+        <a href="{% url 'players:index_filter' player_pos|default:'all' card_type|default:'all' nation|default:'all' league|default:'all' att_workrate|default:'all' def_workrate|default:'all' skill_move|default:'all' wf sort_by|default:'ovr' %}">
+          {{ weak_foots_name }}
+        </a>
+        </dd>
+        {% endfor %}
+      {% endwith %}
+    </dl>
+
+    <dl class="sub-nav">
+      <dt>Sort By:</dt>
+      {% with 'ovr att1 att2 att3 att4 att5 att6' as sorts  %}
+        {% for sort in sorts.split %}
+          {% ifequal role_line 'gk' %}
+            {% cycle 'Overall' 'Diving' 'Handling' 'Kicking' 'Reflexes' 'Speed' 'Positioning' as sorts_name silent %}
+          {% else %}
+            {% cycle 'Overall' 'Pace' 'Shooting' 'Passing' 'Dribbling' 'Defending' 'Heading' as sorts_name silent %}
+          {% endifequal %}
+          {% if sort_by == sort %}
+            <dd class="active">
+              {% else %}
+            <dd>
+          {% endif %}
+        <a href="{% url 'players:index_filter' player_pos|default:'all' card_type|default:'all' nation|default:'all' league|default:'all' att_workrate|default:'all' def_workrate|default:'all' skill_move|default:'all' weak_foot|default:'all' sort %}">
+          {{ sorts_name }}
+        </a>
+        </dd>
+        {% endfor %}
+      {% endwith %}
+    </dl>
+
+    {% include "includes/pagination.html" %}
+
+    {% include "players/includes/card-list.html" %}
+
+    {% include "includes/pagination.html" %}
+
+  </div> <!-- 'large-12 columns' -->
+
+{% endblock %}

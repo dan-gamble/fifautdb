@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <div class="large-8 columns">
+    Soup
+  </div> <!-- 'large-9 columns' -->
+
+  <div class="large-4 columns">
+
+    <ul>
+
+      {% for club in latest_clubs %}
+        <li>
+          <a href="{% url 'clubs:club' club.slug %}">{{ club.name_abbr15 }}</a>
+        </li>
+      {% endfor %}
+
+    </ul>
+
+  </div> <!-- 'large-3 columns' -->
+
+{% endblock %}

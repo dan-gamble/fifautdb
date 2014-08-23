@@ -1,0 +1,12 @@
+// Colour lavbels for stats
+$attr-highest   : #0b6700;
+$attr-high      : #4eb800;
+$attr-normal    : #c99b00;
+$attr-low       : #b14d00;
+$attr-lowest    : #850000;
+
+.label-highest, .progress .label-highest { background : $attr-highest; }
+.label-high, .progress .label-high { background : $attr-high; }
+.label-normal, .progress .label-normal { background : $attr-normal; }
+.label-low, .progress .label-low { background : $attr-low; }
+.label-lowest, .progress .label-lowest { background : $attr-lowest; }

@@ -1,0 +1,111 @@
+.ut-card {
+    height: 200px; width: 135px;
+
+    color: #fff;
+    font: 12px/1.6 'Titillium Web', sans-serif;
+    @include text-shadow(1px 1px 1px #333);
+
+    position: relative;
+    & > div { position: absolute; }
+    & > .card-workrates {
+        @include box-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+        height: 140px; width: 10px;
+        z-index: -1;
+
+        top: 30px;
+        left: 0px;
+
+        .wr1, .wr2 {
+            height: 70px; width: 10px;
+        }
+        .wr1 { @include border-radius(3px 0 0 0);   }
+        .wr2 { @include border-radius(0   0 0 3px); }
+        .wr-low  { background: $workrate-low;    }
+        .wr-med  { background: $workrate-medium; }
+        .wr-high { background: $workrate-high;   }
+    }
+    .card-rating {
+        font-size: 19px;
+        line-height: 24px;
+
+        top: 25px;
+        left: 14px;
+    }
+    .card-name {
+        width: 100%;
+
+        font-size: 13px;
+        line-height: 14px;
+        text-align: center;
+
+        top: 13px;
+        left: 0;
+    }
+    .card-position {
+        font-size: 11px;
+        text-align: left;
+
+        top: 29px;
+        left: 45px;
+    }
+    .card-nation {
+        top: 85px;
+        left: 18px;
+    }
+    .card-club {
+        top: 56px;
+        left: 18px;
+    }
+    .card-picture {
+        top: 34px;
+        left: 56px;
+    }
+    .card-skill,
+    .card-foot {
+        top: 108px;
+    }
+    .card-skill { left: 10px; }
+    .card-foot { left: 76px; }
+    .card-attr1,
+    .card-attr2,
+    .card-attr3 {
+        left: 21px;
+    }
+    .card-attr4,
+    .card-attr5,
+    .card-attr6 {
+        left: 74px;
+    }
+    .card-attr1,
+    .card-attr4 {
+        top: 127px;
+    }
+    .card-attr2,
+    .card-attr5 {
+        top: 144px;
+    }
+    .card-attr3,
+    .card-attr6 {
+        top: 162px;
+    }
+}
+
+.player-card-legend {
+    background: url('/static/img/cards/legend.png');
+    color: #9f862a;
+    text-shadow: 1px 1px 1px rgba(159, 134, 42, 0.4);
+}
+
+.player-card-motm                       { background: url('/static/img/cards/motm.png');           }
+.player-card-gold.player-card-rare      { background: url('/static/img/cards/gold-rare.png');      }
+.player-card-gold.player-card-nonrare   { background: url('/static/img/cards/gold-nonrare.png');   }
+.player-card-gold.player-card-if        { background: url('/static/img/cards/gold-if.png');        }
+.player-card-gold.player-card-tots      { background: url('/static/img/cards/gold-tots.png');      }
+.player-card-silver.player-card-rare    { background: url('/static/img/cards/silver-rare.png');    }
+.player-card-silver.player-card-nonrare { background: url('/static/img/cards/silver-nonrare.png'); }
+.player-card-silver.player-card-if      { background: url('/static/img/cards/silver-if.png');      }
+.player-card-silver.player-card-tots    { background: url('/static/img/cards/silver-tots.png');    }
+.player-card-bronze.player-card-rare    { background: url('/static/img/cards/bronze-rare.png');    }
+.player-card-bronze.player-card-nonrare { background: url('/static/img/cards/bronze-nonrare.png'); }
+.player-card-bronze.player-card-if      { background: url('/static/img/cards/bronze-if.png');      }
+.player-card-bronze.player-card-tots    { background: url('/static/img/cards/bronze-tots.png');    }

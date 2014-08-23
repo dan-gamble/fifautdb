@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <div class="large-12 columns">
+    <table class="large-12">
+      <thead>
+        <tr>
+          <th>Club</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        {% for club in club_list %}
+          <tr>
+            <td><a href="{{ club.get_absolute_url }}">{{ club.name }}</a></td>
+          </tr>
+        {% endfor %}
+
+      </tbody>
+    </table>
+  </div> <!-- 'large-12 columns' -->
+
+{% endblock %}

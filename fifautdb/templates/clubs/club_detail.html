@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block pageHeading %}
+  {{ club.name_abbr15 }} ({{ club.name_abbr3 }}) <img alt="" src="{% static 'img/clubs/' %}{{ club.asset_id }}.png">
+{% endblock %}
+
+{% block content %}
+
+  {% include "includes/detail_view.html" with object=club %}
+
+{% endblock %}
