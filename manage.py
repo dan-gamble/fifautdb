@@ -5,8 +5,8 @@ import sys
 if __name__ == "__main__":
 
     settings = {
-        'test': "fifa.settings.test",
-        'dev': "fifa.settings.local"
+        'test': "fifautdb.settings.test",
+        'dev': "fifautdb.settings.local"
     }
 
     if sys.argv[1] == 'test':

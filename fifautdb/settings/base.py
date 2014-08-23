@@ -73,7 +73,7 @@ PASSWORD_HASHERS = (
     'django.contrib.auth.hashers.CryptPasswordHasher',
 )
 
-ROOT_URLCONF = 'fifa.urls'
+ROOT_URLCONF = 'fifautdb.urls'
 
 
 DJANGO_APPS = (
@@ -128,4 +128,4 @@ LOGGING = {
     }
 }
 
-WSGI_APPLICATION = 'fifa.wsgi.application'
+WSGI_APPLICATION = 'fifautdb.wsgi.application'
