@@ -1,6 +1,9 @@
 # Core imports
 from django.db import models
 
+# Local imports
+from apps.players.models import Player
+
 
 class Club(models.Model):
     id = models.IntegerField(
@@ -53,3 +56,67 @@ class Club(models.Model):
 
     def get_class_name(self):
         return self.__class__.__name__
+
+    def count_players(self):
+        return Player.objects.filter(club_id=self.asset_id).count()
+
+    def count_players_bronze(self):
+        return Player.objects.filter(
+            club_id=self.asset_id,
+            overall_rating__lte=64
+        ).exclude(
+            card_type__gte=2
+        ).count()
+
+    def count_players_silver(self):
+        return Player.objects.filter(
+            club_id=self.asset_id,
+            overall_rating__range=(65, 74)
+        ).exclude(
+            card_type__gte=2
+        ).count()
+
+    def count_players_gold(self):
+        return Player.objects.filter(
+            club_id=self.asset_id,
+            overall_rating__gte=75
+        ).exclude(
+            card_type__gte=2
+        ).count()
+
+    def count_players_if(self):
+        return Player.objects.filter(
+            club_id=self.asset_id,
+            card_type__gte=2
+        ).count()
+
+    def count_players_goalkeepers(self):
+        return Player.objects.filter(
+            club_id=self.asset_id,
+            role_line=0
+        ).count()
+
+    def count_players_defenders(self):
+        return Player.objects.filter(
+            club_id=self.asset_id,
+            role_line=1
+        ).count()
+
+    def count_players_midfielders(self):
+        return Player.objects.filter(
+            club_id=self.asset_id,
+            role_line=2
+        ).count()
+
+    def count_players_forwards(self):
+        return Player.objects.filter(
+            club_id=self.asset_id,
+            role_line=3
+        ).count()
+
+    def players_average(self):
+        return Player.objects.filter(
+            club_id=self.asset_id,
+        ).aggregate(
+            models.Avg('overall_rating')
+        ).values()[0]

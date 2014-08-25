@@ -1,12 +1,22 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 
-{% block pageHeading %}
-  {{ club.name_abbr15 }} ({{ club.name_abbr3 }}) <img alt="" src="{% static 'img/clubs/' %}{{ club.asset_id }}.png">
-{% endblock %}
+{% block subheading %}
+    <div class="medium-24 columns">
+        <h1 class="title left">{{ club.name_abbr15 }} ({{ club.name_abbr3 }})</h1> <img alt="" class="left" width="70" src="{% static 'img/clubs/' %}{{ club.asset_id }}.png">
+    </div>
+{% endblock subheading %}
+
+{% block controls--top %}
+    {% include "includes/detail/controls-top.html" with object=club %}
+{% endblock controls--top %}
 
 {% block content %}
 
-  {% include "includes/detail_view.html" with object=club %}
+  {% include "includes/detail/content.html" with object=club %}
 
 {% endblock %}
+
+{% block controls--bottom %}
+    {% include "includes/detail/controls-bottom.html" with object=club %}
+{% endblock controls--bottom %}

@@ -2,23 +2,37 @@
 
 {% block content %}
 
-  <div class="large-12 columns">
-    <table class="large-12">
-      <thead>
-        <tr>
-          <th>Club</th>
-        </tr>
-      </thead>
-      <tbody>
+    <div class="medium-24 columns">
+        <table class="medium-24">
+            <thead>
+                <tr>
+                    <th>Club</th>
+                    <th>League</th>
+                    <th class="text-center">Avg. Rating</th>
+                    <th class="text-center">Players</th>
+                    <th class="text-center">Inform</th>
+                    <th class="text-center">Gold</th>
+                    <th class="text-center">Silver</th>
+                    <th class="text-center">Bronze</th>
+                </tr>
+            </thead>
+            <tbody>
 
-        {% for club in club_list %}
-          <tr>
-            <td><a href="{{ club.get_absolute_url }}">{{ club.name }}</a></td>
-          </tr>
-        {% endfor %}
+                {% for club in club_list %}
+                    <tr>
+                        <td><a href="{{ club.get_absolute_url }}">{{ club.name }}</a></td>
+                        <td><a href="{{ club.league.get_absolute_url }}">{{ club.league.name_abbr15 }}</a></td>
+                        <td class="text-center">{{ club.players_average|floatformat:"1" }}</td>
+                        <td class="text-center">{{ club.count_players }}</td>
+                        <td class="text-center">{{ club.count_players_if }}</td>
+                        <td class="text-center">{{ club.count_players_gold }}</td>
+                        <td class="text-center">{{ club.count_players_silver }}</td>
+                        <td class="text-center">{{ club.count_players_bronze }}</td>
+                    </tr>
+                {% endfor %}
 
-      </tbody>
-    </table>
-  </div> <!-- 'large-12 columns' -->
+            </tbody>
+        </table>
+    </div> <!-- 'medium-24 columns' -->
 
 {% endblock %}

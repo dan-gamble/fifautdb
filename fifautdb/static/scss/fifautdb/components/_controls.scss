@@ -1,11 +1,16 @@
 [class^="controls"] {
 
-    &[class*="--top"] {
-        background: $white;
-        height: rem-calc(81);
+    background: $white;
+    height: rem-calc(81);
 
-        border-bottom: $border-styling;
+    .list--inline--buttons {
+        padding: rem-calc(20 0);
 
-        .list--inline--buttons { padding: rem-calc(20 0); }
+        font-size: rem-calc(14);
+
+        &:not(:last-of-type) { margin-right: rem-calc(20); }
     }
+
+    &[class*="--top"]    { border-bottom: $border-styling; }
+    &[class*="--bottom"] { border-top:    $border-styling; }
 }

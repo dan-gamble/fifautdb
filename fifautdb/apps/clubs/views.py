@@ -12,6 +12,12 @@ class ClubListView(ListView):
     # Set the number of clubs per page
     paginate_by = 50
 
+    def get_queryset(self):
+        queryset = Club.objects.all().prefetch_related(
+            'league'
+        )
+        return queryset
+
 
 class ClubDetailView(CoreDetailMixin, DetailView):
     # Define the model for the CBV

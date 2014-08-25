@@ -1,0 +1,74 @@
+{% load staticfiles %}
+
+<div class="large-18 columns">
+
+    {% if object.leagues %}
+        <h2>Leagues</h2>
+        {% for league in object.leagues.all %}
+            <a href="{% url 'leagues:league' league.slug %}">
+                <img alt="{{ league.name }} league logo" src="{% static 'img/leagues/' %}{{ league.asset_id }}.png">
+                {{ league.name_abbr15 }}
+            </a>
+        {% empty %}
+            {{ nation.name }} has no Leagues
+        {% endfor %}
+    {% endif %}
+
+    {% if object.clubs %}
+        <h2>Leagues</h2>
+        {% for club in object.clubs.all %}
+            <a href="{% url 'clubs:club' club.slug %}">
+                <img alt="{{ club.name }} club logo" src="{% static 'img/clubs/' %}{{ club.asset_id }}.png" width="50">
+                {{ club.name_abbr15 }}
+            </a>
+        {% empty %}
+            {{ league.name_abbr_15 }} has no Leagues
+        {% endfor %}
+    {% endif %}
+
+{#        {% if object.clubs %}#}
+{#            <h2>Clubs</h2>#}
+{#            {% for club in object.clubs.all %}#}
+{#                <a class="left" href="{% url 'clubs:club' club.slug %}">#}
+{#                    <div class="ut-card club-card-gold-rare">#}
+{#                        <div class="club-card-title">Club</div>#}
+{#                        <img class="club-card-badge" src="{% static 'img/clubs/' %}{{ club.asset_id }}.png" height="35" width="35">#}
+{#                        <img class="club-card-shirt" src="{% static 'img/kits/' %}{{ club.asset_id }}_0.png" height="100" width="70">#}
+{#                        <div class="club-card-name">{{ club.name_abbr15 }}</div>#}
+{#                    </div>#}
+{#                </a>#}
+{#            {% endfor %}#}
+{#        {% endif %}#}
+
+</div>
+
+<div class="large-6 columns panel">
+    <h3>{{ object.name }} details</h3>
+
+    <p>Players: {{ object.count_players }}</p>
+
+    <p>IF's: {{ object.count_players_if }}</p>
+
+    <p>Golds: {{ object.count_players_gold }}</p>
+
+    <p>Silvers: {{ object.count_players_silver }}</p>
+
+    <p>Bronzes: {{ object.count_players_bronze }}</p>
+
+    <p>Average Rating: {{ object.players_average|floatformat:"0" }}</p>
+</div>
+
+<div class="medium-24 columns">
+    <hr>
+
+    <h2>Players</h2>
+
+    {% include "players/includes/card-list.html" %}
+
+</div>
+
+<script>
+    if (!$("dl.sub-nav dd").hasClass("active")) {
+        $("dl.sub-nav dd:first-of-type").addClass("active");
+    }
+</script>

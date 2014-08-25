@@ -8,7 +8,7 @@ urlpatterns = patterns('',
                        url(
                            r'^$',
                            NationListView.as_view(),
-                           name='index'
+                           name='list'
                        ),
                        url(
                            r'^(?P<slug>[a-z-]*)/$',

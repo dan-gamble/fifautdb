@@ -8,7 +8,7 @@ urlpatterns = patterns('',
                        url(
                            r'^$',
                            PlayerListView.as_view(),
-                           name='index'
+                           name='list'
                        ),
                        url(
                            r'^(?P<player_pos>[a-z]*)/'

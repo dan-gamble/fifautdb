@@ -48,6 +48,9 @@ SECRET_KEY = r"ur97rr4qrrv&fz7egjn7vx#ohgb-r6thho%qn#v#t!@fez507u"
 TEMPLATE_DIRS = (
     os.path.join(SITE_ROOT, 'templates'),
 )
+
+path.insert(0, os.path.join(SITE_ROOT, 'apps'))
+
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
@@ -95,7 +98,7 @@ DJANGO_APPS = (
 )
 
 THIRD_PARTY_APPS = (
-
+    'markdown_deux',
 )
 
 # Apps specific for this project go here.
@@ -103,6 +106,7 @@ LOCAL_APPS = (
     'apps.clubs',
     'apps.leagues',
     'apps.nations',
+    'apps.news',
     'apps.players',
 )
 

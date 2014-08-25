@@ -1,0 +1,102 @@
+<section class="controls--bottom">
+    <div class="row">
+        {% with object.get_class_name|add:'s'|add:':'|add:object.get_class_name|add:'_filter'|lower as url_string %}
+
+            <div class="medium-24 columns">
+
+                <ul class="list--inline--buttons left">
+                    <li class="control__label">Filters:</li>
+                    <li>
+                        <a href="#" data-dropdown="card-type-bottom">Card Type <i class="fa fa-caret-down"></i></a>
+                        <ul id="card-type-bottom" class="f-dropdown" data-dropdown-content>
+                            {% with 'all inform gold silver bronze' as card_types  %}
+                                {% for ct in card_types.split %}
+                                    {% cycle 'All' 'Inform' 'Gold' 'Silver' 'Bronze' as card_type_name silent %}
+                                    <li>
+                                        <a href="{% url url_string object.slug ct role_line|default:'all' sort_by|default:'ovr' %}">
+                                            {{ card_type_name }}
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            {% endwith %}
+                        </ul>
+                    </li>
+                    {% if card_type %}
+                        <li class="active"><a href="#">{{ card_type|capfirst }}</a></li>
+                    {% endif %}
+                </ul>
+
+                <ul class="list--inline--buttons left">
+                    <li>
+                        <a href="#" data-dropdown="role-line-bottom">Role Line <i class="fa fa-caret-down"></i></a>
+                        <ul id="role-line-bottom" class="f-dropdown" data-dropdown-content>
+                            {% with 'all att mid def gk' as role_lines  %}
+                                {% for rl in role_lines.split %}
+                                    {% cycle 'All' 'ATT' 'MID' 'DEF' 'GK' as role_lines_name silent %}
+                                    <li>
+                                        <a href="{% url url_string object.slug card_type|default:'all' rl sort_by|default:'ovr' %}">
+                                            {{ role_lines_name }}
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            {% endwith %}
+                        </ul>
+                    </li>
+                    {% if role_line %}
+                        <li class="active"><a href="#">{{ role_label }}</a></li>
+                    {% endif %}
+                </ul>
+
+                <ul class="list--inline--buttons left">
+                    <li>
+                        <a href="#" data-dropdown="sort-by-bottom">Sort by <i class="fa fa-caret-down"></i></a>
+                        <ul id="sort-by-bottom" class="f-dropdown" data-dropdown-content>
+                            {% with 'ovr att1 att2 att3 att4 att5 att6' as sorts  %}
+                                {% for sort in sorts.split %}
+                                    {% ifequal role_line 'gk' %}
+                                        {% cycle 'Overall' 'Diving' 'Handling' 'Kicking' 'Reflexes' 'Speed' 'Positioning' as sorts_name silent %}
+                                    {% else %}
+                                        {% cycle 'Overall' 'Pace' 'Shooting' 'Passing' 'Dribbling' 'Defending' 'Heading' as sorts_name silent %}
+                                    {% endifequal %}
+                                    <li>
+                                        <a href="{% url url_string object.slug card_type|default:'all' role_line|default:'all' sort %}">
+                                            {{ sorts_name }}
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            {% endwith %}
+                        </ul>
+                    </li>
+                    {% if sort_by %}
+                        <li class="active">
+                            <a href="#">
+                                {{ sort_label }}
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+
+                <ul class="list--inline--buttons right">
+                    {% if players.paginator.num_pages > 1 %}
+                        {% if players.has_previous %}
+                            <li class="arrow"><a href="?page={{ players.previous_page_number }}">Prev</a></li>
+                        {% else %}
+                            <li class="unavailable"><a href="#">Prev</a></li>
+                        {% endif %}
+                        {% for page in players.paginator.page_range %}
+                            {% if forloop.counter == players.number %}
+                                <li class="active"><a href="?page={{ page }}">{{ players.number }} of {{ players.paginator.page_range|length }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                        {% if players.has_next %}
+                            <li class="arrow"><a href="?page={{ players.next_page_number }}">Next</a></li>
+                        {% else %}
+                            <li class="unavailable"><a href="#">Next</a></li>
+                        {% endif %}
+                    {% endif %}
+                </ul>
+
+            </div>
+        {% endwith %}
+    </div>
+</section>
