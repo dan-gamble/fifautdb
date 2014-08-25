@@ -4,8 +4,6 @@ from __future__ import absolute_import
 
 from os import environ
 
-import dj_database_url
-
 from .base import *
 
 # Normally you should not import ANYTHING from Django directly
@@ -42,6 +40,7 @@ SECRET_KEY = get_env_setting('SECRET_KEY')
 CORS_ORIGIN_WHITELIST = ()
 
 # Parse database configuration from $DATABASE_URL
+import dj_database_url
 DATABASES['default'] = dj_database_url.config()
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()

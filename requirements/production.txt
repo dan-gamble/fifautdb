@@ -1,6 +1,6 @@
 # Production dependencies go here.
 # There should not be any there
--r base.txt
+# -r base.txt
 
 django-toolbelt>=0.0.1
 django-storages>=1.1.8
