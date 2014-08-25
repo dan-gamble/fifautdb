@@ -1,0 +1,5 @@
+# Heroku Deployment
+# Should read from other requirements files, no individual dependencies here.
+
+-r base.txt
+-r production.txt
