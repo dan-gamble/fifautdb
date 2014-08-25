@@ -4,6 +4,8 @@ from __future__ import absolute_import
 
 from os import environ
 
+import dj_database_url
+
 from .base import *
 
 # Normally you should not import ANYTHING from Django directly
@@ -38,3 +40,22 @@ CACHES = {}
 SECRET_KEY = get_env_setting('SECRET_KEY')
 
 CORS_ORIGIN_WHITELIST = ()
+
+# Parse database configuration from $DATABASE_URL
+DATABASES['default'] = dj_database_url.config()
+
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# Allow all host headers
+ALLOWED_HOSTS = ['*']
+
+# Static asset configuration
+import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = 'staticfiles'
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)

@@ -1,0 +1,1 @@
+web: gunicorn fifautdb.wsgi --log-file -
