@@ -23,7 +23,7 @@
               <a href="{{ nation.get_absolute_url }}">{{ nation.name }}</a> ({{ nation.name_abbr3 }})
             </td>
             <td>
-              {{ nation.leagues|length }}
+              {{ nation.leagues.all|length }}
             </td>
           </tr>
 

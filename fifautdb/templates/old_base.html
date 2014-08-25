@@ -1,0 +1,111 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block pageTitle %}
+            Page title block, this needs changing brah
+        {% endblock %}
+    </title>
+    <link href='http://fonts.googleapis.com/css?family=Bitter:400,700,400italic'
+          rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700'
+          rel='stylesheet' type='text/css'>
+
+    <script
+        src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    {% block headstyles %}
+        <link href="{% static 'css/screen.css' %}" rel="stylesheet"
+              type="text/css">
+        <script src="{% static 'js/modernizr.js' %}"></script>
+    {% endblock %}
+</head>
+<body>
+
+<div id="top-level-nav">
+    <div class="row">
+        <div class="large-12 columns">
+            <nav class="right">
+                <ul class="inline-list">
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'clubs:index' %}">Clubs</a></li>
+                    <li><a href="{% url 'leagues:index' %}">Leagues</a></li>
+                    <li><a href="{% url 'nations:index' %}">Nations</a></li>
+                    <li><a href="{% url 'players:index' %}">Players</a></li>
+                </ul>
+            </nav>
+        </div>
+        <!-- 'large-12 columns' -->
+    </div>
+    <!-- 'row' -->
+</div>
+<!-- 'id="top-level-nav"' -->
+
+<div id="brand">
+    <div class="row">
+        <div class="large-3 columns">
+            <img alt="" src="http://placehold.it/233x96">
+        </div>
+        <!-- 'large-4 columns' -->
+        <div class="large-9 columns">
+            <img alt="" src="http://placehold.it/758x96">
+        </div>
+        <!-- 'large-8 columns' -->
+    </div>
+    <!-- 'row' -->
+</div>
+<!-- 'id="brand"' -->
+
+<div id="sub-nav">
+    <div class="row">
+        <div class="large-12 columns">
+            <nav>
+                <ul class="inline-list">
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'clubs:index' %}">Clubs</a></li>
+                    <li><a href="{% url 'leagues:index' %}">Leagues</a></li>
+                    <li><a href="{% url 'nations:index' %}">Nations</a></li>
+                    <li><a href="{% url 'players:index' %}">Players</a></li>
+                </ul>
+            </nav>
+        </div>
+        <!-- 'large-12 columns' -->
+    </div>
+    <!-- 'row' -->
+</div>
+<!-- 'id="sub-nav"' -->
+
+<div id="content">
+
+    <div class="row">
+        <div class="large-12 columns">
+            <h1>
+                {% block pageHeading %}
+                    Base block, this needs changing brah
+                {% endblock %}
+            </h1>
+        </div>
+        <!-- 'large-12 columns' -->
+    </div>
+    <!-- 'row' -->
+
+    <div class="row">
+
+        {% block content %}
+
+        {% endblock %}
+
+    </div>
+    <!-- 'row' -->
+
+</div>
+<!-- 'id="content"' -->
+
+<script src="{% static 'js/foundation.min.js' %}"></script>
+<script type="text/javascript">
+    $(document).foundation();
+</script>
+
+</body>
+</html>

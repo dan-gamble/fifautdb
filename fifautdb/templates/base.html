@@ -2,91 +2,269 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>
-    {% block pageTitle %}
-      Page title block, this needs changing brah
-    {% endblock %}
-  </title>
-  <link href='http://fonts.googleapis.com/css?family=Bitter:400,700,400italic' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
+    <meta charset="UTF-8">
+    <title>
+        {% block pageTitle %}
+            Page title block, this needs changing brah
+        {% endblock %}
+    </title>
 
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-  {% block headstyles %}
-    <link href="{% static 'css/screen.css' %}" rel="stylesheet" type="text/css">
-    <script src="{% static 'js/modernizr.js' %}"></script>
-  {% endblock %}
+    {% block headstyles %}
+        <link href="{% static 'css/screen.css' %}" rel="stylesheet" type="text/css">
+    {% endblock %}
+    {% block headscripts %}
+        <script src="{% static 'js/vendor/modernizr.js' %}"></script>
+    {% endblock %}
 </head>
 <body>
 
-<div id="top-level-nav">
-  <div class="row">
-    <div class="large-12 columns">
-      <nav class="right">
-        <ul class="inline-list">
-          <li><a href="{% url 'index' %}">Home</a></li>
-          <li><a href="{% url 'clubs:index' %}">Clubs</a></li>
-          <li><a href="{% url 'leagues:index' %}">Leagues</a></li>
-          <li><a href="{% url 'nations:index' %}">Nations</a></li>
-          <li><a href="{% url 'players:index' %}">Players</a></li>
-        </ul>
-      </nav>
-    </div> <!-- 'large-12 columns' -->
-  </div> <!-- 'row' -->
-</div> <!-- 'id="top-level-nav"' -->
+<header class="top-bar">
+    <div class="row" data-equalizer>
 
-<div id="brand">
-  <div class="row">
-    <div class="large-3 columns">
-      <img alt="" src="http://placehold.it/233x96">
-    </div> <!-- 'large-4 columns' -->
-    <div class="large-9 columns">
-      <img alt="" src="http://placehold.it/758x96">
-    </div> <!-- 'large-8 columns' -->
-  </div> <!-- 'row' -->
-</div> <!-- 'id="brand"' -->
+        <div class="medium-4 columns" data-equalizer-watch>
+            <a class="brand__logo" href="{% url 'index' %}">FifaUTDB</a>
+        </div>
 
-<div id="sub-nav">
-  <div class="row">
-    <div class="large-12 columns">
-      <nav>
-        <ul class="inline-list">
-          <li><a href="{% url 'index' %}">Home</a></li>
-          <li><a href="{% url 'clubs:index' %}">Clubs</a></li>
-          <li><a href="{% url 'leagues:index' %}">Leagues</a></li>
-          <li><a href="{% url 'nations:index' %}">Nations</a></li>
-          <li><a href="{% url 'players:index' %}">Players</a></li>
-        </ul>
-      </nav>
-    </div> <!-- 'large-12 columns' -->
-  </div> <!-- 'row' -->
-</div> <!-- 'id="sub-nav"' -->
+        <div class="medium-8 columns" data-equalizer-watch>
+            <nav>
+                <ul class="list--inline">
+                    <li><a href="#">Clubs</a></li>
+                    <li><a href="#">Leagues</a></li>
+                    <li><a href="#">Nations</a></li>
+                    <li><a href="#">Players</a></li>
+                </ul>
+            </nav>
+        </div>
 
-<div id="content">
+        <div class="medium-7 columns" data-equalizer-watch>
+            <form class="form--top-bar clearfix" action="">
 
-  <div class="row">
-    <div class="large-12 columns">
-      <h1>
-        {% block pageHeading %}
-          Base block, this needs changing brah
-        {% endblock %}
-      </h1>
-    </div> <!-- 'large-12 columns' -->
-  </div> <!-- 'row' -->
+                <div class="input__icon-wrapper">
+                    <input type="search" placeholder="Search">
+                    <i class="fa fa-search"></i>
+                </div>
 
-  <div class="row">
+            </form>
+        </div>
 
-    {% block content %}
+        <div class="medium-5 columns" data-equalizer-watch>
+            <div class="account">
+                <a href="#">
+                    <img alt="" src="{% static 'img/kits/11_0.png' %}" width="40">
+                    Username <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="account__dropdown medium-24 columns">
+                    <li>
+                        <a href="#"><i class="fa fa-home fa-fw"></i>Scenes</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-book fa-fw"></i>Settings</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-pencil fa-fw"></i>Profile</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#"><i class="fa fa-cog fa-fw"></i>Log out</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
 
-    {% endblock %}
+        </div>
+    </div>
+</header>
 
-  </div> <!-- 'row' -->
+<header class="top-bar__subheading">
+    <div class="row">
+        <div class="medium-24 columns">
 
-</div><!-- 'id="content"' -->
+            <h1 class="title left">Sub heading</h1>
 
-<script src="{% static 'js/foundation.min.js' %}"></script>
+            <form class="form--top-bar medium-9 right" action="">
+                <div class="input__icon-wrapper">
+                    <input type="search" placeholder="Search">
+                    <i class="fa fa-search"></i>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</header>
+
+<section class="controls--top">
+    <div class="row">
+
+        <div class="medium-9 columns">
+            <ul class="list--inline--buttons">
+                <li class="control__label">Featured:</li>
+                <li><a href="#">Copies</a></li>
+                <li><a href="#">Views</a></li>
+                <li><a href="#">Recent</a></li>
+            </ul>
+        </div>
+
+        <div class="medium-8 columns">
+            <ul class="list--inline--buttons">
+                <li class="control__label">List:</li>
+                <li><a href="#">Small</a></li>
+                <li><a href="#">Medium</a></li>
+                <li><a href="#">Large</a></li>
+            </ul>
+        </div>
+
+        <div class="medium-7 columns">
+            <ul class="list--inline--buttons right">
+                <li class="unavailable"><a href="#">Prev</a></li>
+                <li><a href="#">1..1 of 1</a></li>
+                <li><a href="#">Next</a></li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+<section class="content-container">
+    <div class="row">
+        <div class="medium-24 columns">
+            <main>
+                <div class="type-demo">
+
+                    <h1>h1. This is a very large header.</h1>
+                    <h2>h2. This is a large header.</h2>
+                    <h3>h3. This is a medium header.</h3>
+                    <h4>h4. This is a moderate header.</h4>
+                    <h5>h5. This is a small header.</h5>
+                    <h6>h6. This is a tiny header.</h6>
+
+                    <br>
+
+                    <h1 class="subheader">h1. subheader</h1>
+                    <h2 class="subheader">h2. subheader</h2>
+                    <h3 class="subheader">h3. subheader</h3>
+                    <h4 class="subheader">h4. subheader</h4>
+                    <h5 class="subheader">h5. subheader</h5>
+                    <h6 class="subheader">h6. subheader</h6>
+
+                    <hr>
+
+                    <h3>Definition List</h3>
+                    <h5>Definition lists are great for small block of copy that describe the header</h5>
+                    <dl>
+                        <dt>Lower cost</dt>
+                        <dd>The new version of this product costs significantly less than the previous one!</dd>
+                        <dt>Easier to use</dt>
+                        <dd>We've changed the product so that it's much easier to use!</dd>
+                        <dt>Safe for kids</dt>
+                        <dd>You can leave your kids alone in a room with this product and they won't get hurt (not a guarantee).</dd>
+                    </dl>
+                    <hr>
+
+                    <h5>Un-ordered lists are great for making quick outlines bulleted.</h5>
+                    <ul class="disc">
+                        <li>List item with a much longer description or more content.</li>
+                        <li>List item</li>
+                        <li>List item
+                            <ul>
+                                <li>Nested List Item</li>
+                                <li>Nested List Item</li>
+                                <li>Nested List Item</li>
+                            </ul>
+                        </li>
+                        <li>List item</li>
+                        <li>List item</li>
+                        <li>List item</li>
+                    </ul>
+
+                    <h5>Ordered lists are great for lists that need order, duh.</h5>
+                    <ol>
+                        <li>List Item 1</li>
+                        <li>List Item 2</li>
+                        <li>List Item 3</li>
+                    </ol>
+
+
+
+                    <br>
+                    <h5>Blockquote</h5>
+                    <blockquote>I do not fear computers. I fear the lack of them. Maecenas faucibus mollis interdum. Aenean lacinia bibendum nulla sed consectetur.<cite>Isaac Asimov</cite></blockquote>
+
+                    <br>
+                    <h5>Vcard</h5>
+                    <ul class="vcard">
+                        <li class="fn">Gaius Baltar</li>
+                        <li class="street-address">123 Colonial Ave.</li>
+                        <li class="locality">Caprica City</li>
+                        <li><span class="state">Caprica</span>, <span class="zip">12345</span></li>
+                        <li class="email"><a href="#">g.baltar@example.com<script type="text/javascript">
+                            /* <![CDATA[ */
+                            (function(){try{var s,a,i,j,r,c,l,b=document.getElementsByTagName("script");l=b[b.length-1].previousSibling;a=l.getAttribute('data-cfemail');if(a){s='';r=parseInt(a.substr(0,2),16);for(j=2;a.length-j;j+=2){c=parseInt(a.substr(j,2),16)^r;s+=String.fromCharCode(c);}s=document.createTextNode(s);l.parentNode.replaceChild(s,l);}}catch(e){}})();
+                            /* ]]> */
+                        </script></a></li>
+                    </ul>
+
+                </div>
+            </main>
+        </div>
+    </div>
+</section>
+
+<footer class="footer__social">
+
+    <div class="row">
+
+        <div class="medium-4 columns">
+            <a class="brand__logo" href="{% url 'index' %}">FifaUTDB</a>
+        </div>
+
+        <div class="medium-12 columns">
+            <nav>
+                <ul class="list--inline">
+                    <li><a href="#">Library</a></li>
+                    <li><a href="#">Learn</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Forum</a></li>
+                    <li><a href="#">Gallery</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="medium-5 columns">
+            <ul class="list--inline social">
+
+                <li class="social__facebook">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                </li>
+
+                <li class="social__twitter">
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                </li>
+
+                <li class="social__googleplus">
+                    <a href="#"><i class="fa fa-google-plus"></i></a>
+                </li>
+
+            </ul>
+        </div>
+
+    </div>
+
+</footer>
+
+<footer class="footer__copy">
+    <div class="row medium-14 medium-centered columns">
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+        <p>When an unknown <a href="#">printer</a> took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
+    </div>
+</footer>
+
+<script src="{% static 'js/vendor/jquery.js' %}"></script>
+<script src="{% static 'js/vendor/fastclick.js' %}"></script>
+<script src="{% static 'js/foundation/foundation.js' %}"></script>
+<script src="{% static 'js/foundation/foundation.equalizer.js' %}"></script>
 <script type="text/javascript">
-  $(document).foundation();
+    $(document).foundation();
 </script>
 
 </body>

@@ -1,0 +1,110 @@
+// Shared styles
+
+.top-bar a,
+.footer__social a {
+    color: #fff;
+}
+.top-bar .brand__logo,
+.footer__social .brand__logo {
+    display: block;
+
+    color: $secondary-color;
+}
+.top-bar {
+    background: $primary-color;
+    height: rem-calc(100);
+
+    ul { font-size: 1rem; }
+
+    input { margin: 0; }
+    nav .list--inline li {
+        margin: rem-calc(30 0);
+
+        a {
+            padding: rem-calc(9 10);
+            
+            &.button {
+                background: $secondary-color;
+                margin: 0;
+            }
+        }
+    }
+
+    .form--top-bar { margin: rem-calc(30 0); }
+
+    .brand__logo { line-height: rem-calc(100); }
+    
+    .account {
+        background: $primary-color-dark;
+        height: 100%;
+
+        position: relative;
+
+        & > * { line-height: rem-calc(100); }
+        & > a {
+            text-align: center;
+            & > i {
+                margin-left: rem-calc(10);
+
+                font-size: rem-calc(20);
+                vertical-align: middle;
+            }
+        }
+
+        a {
+            display: block;
+
+            color: #fff;
+        }
+        img { margin-right: rem-calc(10); }
+
+        &:hover > .account__dropdown { display: block; }
+        .account__dropdown {
+            z-index: 10;
+
+            background: $primary-color-dark;
+            @include box-shadow(-3px 3px 0 rgba(0, 0, 0, 0.2));
+            display: none;
+            margin: 0;
+            padding: rem-calc(15);
+
+            @include border-radius(0 0 $global-radius $global-radius);
+
+            line-height: rem-calc(40);
+            list-style: none;
+
+            position: absolute;
+                top: rem-calc(97); // Account height (100) - box-shadow (3)
+
+            i { margin: rem-calc(0 25 0 15); }
+            
+            a:hover {
+                background: $primary-color;
+
+                @include border-radius($global-radius);
+            }
+
+            .divider {
+                margin: rem-calc(10 0);
+
+                border-bottom: 1px solid #363647;
+            }
+        }
+    }
+}
+
+.top-bar__subheading {
+    background: $white-smoke;
+    height: rem-calc(81);
+
+    border-bottom: $border-styling;
+
+    .title {
+        margin-bottom: 0;
+
+        font-weight: 700;
+        line-height: rem-calc(80);
+    }
+
+    input { margin: rem-calc(20 0); }
+}

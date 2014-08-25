@@ -28,6 +28,7 @@ CACHES = {
 INSTALLED_APPS += (
     'django_extensions',
     'debug_toolbar',
+    'template_timings_panel',
 )
 
 INTERNAL_IPS = ('127.0.0.1',)
@@ -41,5 +42,16 @@ DEBUG_TOOLBAR_CONFIG = {
     'INTERCEPT_REDIRECTS': False,
     'SHOW_TEMPLATE_CONTEXT': True,
 }
+
+DEBUG_TOOLBAR_PANELS = (
+    'debug_toolbar.panels.versions.VersionsPanel',
+    'debug_toolbar.panels.settings.SettingsPanel',
+    'debug_toolbar.panels.request.RequestPanel',
+    'debug_toolbar.panels.sql.SQLPanel',
+    'debug_toolbar.panels.templates.TemplatesPanel',
+    'debug_toolbar.panels.cache.CachePanel',
+    'debug_toolbar.panels.profiling.ProfilingPanel',
+    'template_timings_panel.panels.TemplateTimings.TemplateTimings',
+)
 
 CORS_ORIGIN_ALLOW_ALL = True

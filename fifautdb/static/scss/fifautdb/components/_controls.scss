@@ -1,0 +1,11 @@
+[class^="controls"] {
+
+    &[class*="--top"] {
+        background: $white;
+        height: rem-calc(81);
+
+        border-bottom: $border-styling;
+
+        .list--inline--buttons { padding: rem-calc(20 0); }
+    }
+}

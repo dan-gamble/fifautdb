@@ -60,19 +60,22 @@ class Player(models.Model):
         'clubs.Club',
         to_field='asset_id',
         blank=True,
-        null=True
+        null=True,
+        related_name='players'
     )
     league = models.ForeignKey(
         'leagues.League',
         to_field='asset_id',
         blank=True,
-        null=True
+        null=True,
+        related_name='players'
     )
     nation = models.ForeignKey(
         'nations.Nation',
         to_field='asset_id',
         blank=True,
-        null=True
+        null=True,
+        related_name='players'
     )
     shirt_number = models.IntegerField(
         blank=True,

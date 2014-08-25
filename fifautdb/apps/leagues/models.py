@@ -20,7 +20,8 @@ class League(models.Model):
     )
     nation = models.ForeignKey(
         'nations.Nation',
-        to_field='asset_id'
+        to_field='asset_id',
+        related_name='leagues'
     )
     created = models.DateTimeField(
         blank=True,

@@ -67,7 +67,7 @@
 
     {% if object.leagues %}
       <h2>Leagues</h2>
-      {% for league in object.leagues %}
+      {% for league in object.leagues.all %}
         <a href="{% url 'leagues:league' league.slug %}">
           <img alt="{{ league.name }} league logo" src="{% static 'img/leagues/' %}{{ league.asset_id }}.png">
           {{ league.name_abbr15 }}
@@ -81,15 +81,15 @@
   <div class="panel right">
     <h3>{{ object.name }} details</h3>
 
-    <p>Players: {{ object.players|length }}</p>
+    <p>Players: {{ object.count_players }}</p>
 
-    <p>IF's: {{ object.players_if|length }}</p>
+    <p>IF's: {{ object.count_players_if }}</p>
 
-    <p>Golds: {{ object.players_gold|length }}</p>
+    <p>Golds: {{ object.count_players_gold }}</p>
 
-    <p>Silvers: {{ object.players_silver|length }}</p>
+    <p>Silvers: {{ object.count_players_silver }}</p>
 
-    <p>Bronzes: {{ object.players_bronze|length }}</p>
+    <p>Bronzes: {{ object.count_players_bronze }}</p>
 
     <p>Average Rating: {{ object.players_average|floatformat:"0" }}</p>
   </div>

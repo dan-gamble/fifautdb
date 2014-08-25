@@ -23,7 +23,8 @@ class Club(models.Model):
     )
     league = models.ForeignKey(
         'leagues.League',
-        to_field='asset_id'
+        to_field='asset_id',
+        related_name='clubs'
     )
     created = models.DateTimeField(
         blank=True,

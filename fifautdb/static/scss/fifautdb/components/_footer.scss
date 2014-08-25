@@ -1,0 +1,34 @@
+[class^='footer'] {
+    &[class*='__social'] {
+        background: $primary-color;
+        height: rem-calc(150);
+
+        .list--inline,
+        .brand__logo {
+            line-height: rem-calc(150);
+        }
+        .social {
+            display: flex;
+            li {
+                @include flex(1);
+                margin: 0;
+
+                font-size: rem-calc(26);
+                text-align: center;
+            }
+        }
+    }
+    &[class*='__copy'] {
+        background: $primary-color-dark;
+        height: rem-calc(115);
+        padding: rem-calc(20 0);
+
+        color: #555757;
+        text-align: center;
+
+        a {
+            color: #8a8aa0;
+            text-decoration: underline;
+        }
+    }
+}

@@ -1,6 +1,14 @@
 // Variables
 @import "variables";
 
+// Structure
+@import "components/buttons";
+@import "components/controls";
+@import "components/footer";
+@import "components/forms";
+@import "components/lists";
+@import "components/top-bar";
+
 // Specifics
 @import "foundations/foundations";
 @import "players/players";

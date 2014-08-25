@@ -29,7 +29,7 @@
     "foundation/foundation/components/labels",
     "foundation/foundation/components/magellan",
     "foundation/foundation/components/orbit",
-    "foundation/foundation/components/pagination",
+    // "foundation/foundation/components/pagination",
     "foundation/foundation/components/panels",
     "foundation/foundation/components/pricing-tables",
     "foundation/foundation/components/progress-bars",
@@ -43,7 +43,7 @@
     "foundation/foundation/components/tabs",
     "foundation/foundation/components/thumbs",
     "foundation/foundation/components/tooltips",
-    "foundation/foundation/components/top-bar",
+    // "foundation/foundation/components/top-bar",
     "foundation/foundation/components/type",
     "foundation/foundation/components/offcanvas",
     "foundation/foundation/components/visibility";
@@ -52,3 +52,25 @@
 @import "jquery-ui";
 
 @import "fifautdb/fifautdb";
+
+@mixin heading-margin-bottom() {
+    // $font-sizes: ($h1-font-size, $h2-font-size, $h3-font-size, $h4-font-size, $h5-font-size, $h6-font-size);
+    $font-sizes: (
+            1: $h1-font-size,
+            2: $h2-font-size,
+            3: $h3-font-size,
+            4: $h4-font-size,
+            5: $h5-font-size,
+            6: $h6-font-size,
+    );
+    @for $i from 1 through 6 {
+        h#{$i} {
+            margin-bottom: map-get($font-sizes, $i) * $header-line-height / 2;;
+        }
+    }
+}
+
+@include heading-margin-bottom;
+
+body               { background: $primary-color-dark; }
+.content-container { background: $white; padding: rem-calc(20 0); }

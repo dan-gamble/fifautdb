@@ -51,62 +51,62 @@ class Nation(models.Model):
     def leagues(self):
         return League.objects.filter(nation=self.asset_id)
 
-    def players(self):
-        return Player.objects.filter(nation_id=self.asset_id)
+    def count_players(self):
+        return Player.objects.filter(nation_id=self.asset_id).count()
 
-    def players_bronze(self):
+    def count_players_bronze(self):
         return Player.objects.filter(
             nation_id=self.asset_id,
             overall_rating__lte=64
         ).exclude(
             card_type__gte=2
-        )
+        ).count()
 
-    def players_silver(self):
+    def count_players_silver(self):
         return Player.objects.filter(
             nation_id=self.asset_id,
             overall_rating__range=(65, 74)
         ).exclude(
             card_type__gte=2
-        )
+        ).count()
 
-    def players_gold(self):
+    def count_players_gold(self):
         return Player.objects.filter(
             nation_id=self.asset_id,
             overall_rating__gte=75
         ).exclude(
             card_type__gte=2
-        )
+        ).count()
 
-    def players_if(self):
+    def count_players_if(self):
         return Player.objects.filter(
             nation_id=self.asset_id,
             card_type__gte=2
-        )
+        ).count()
 
-    def players_goalkeepers(self):
+    def count_players_goalkeepers(self):
         return Player.objects.filter(
             nation_id=self.asset_id,
             role_line=0
-        )
+        ).count()
 
-    def players_defenders(self):
+    def count_players_defenders(self):
         return Player.objects.filter(
             nation_id=self.asset_id,
             role_line=1
-        )
+        ).count()
 
-    def players_midfielders(self):
+    def count_players_midfielders(self):
         return Player.objects.filter(
             nation_id=self.asset_id,
             role_line=2
-        )
+        ).count()
 
-    def players_forwards(self):
+    def count_players_forwards(self):
         return Player.objects.filter(
             nation_id=self.asset_id,
             role_line=3
-        )
+        ).count()
 
     def players_average(self):
         return Player.objects.filter(

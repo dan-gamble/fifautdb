@@ -26,7 +26,7 @@ class CoreDetailMixin(object):
         # Pull all the players that belong to the object_type
         player_list = Player.objects.filter(
             **{filters: context['object'].asset_id}
-        )
+        ).select_related('club', 'league', 'nation')
 
         # Create pagination
         cbv_pagination(self, context, player_list, 28, 'players')
