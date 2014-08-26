@@ -2,7 +2,7 @@
 from django.views.generic import DetailView, ListView
 
 # Local imports
-from apps.core.cbv_mixins import CoreDetailMixin, CoreDetailFilteredMixin
+from core.cbv_mixins import CoreDetailMixin, CoreDetailFilteredMixin
 from .models import League
 
 

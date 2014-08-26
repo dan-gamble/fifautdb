@@ -2,8 +2,8 @@
 from django.views.generic import ListView, DetailView
 
 # Local imports
-from apps.leagues.models import League
-from apps.nations.models import Nation
+from leagues.models import League
+from nations.models import Nation
 from .models import Player
 
 

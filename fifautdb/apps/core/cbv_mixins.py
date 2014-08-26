@@ -1,6 +1,6 @@
 # Local imports
-from apps.core.functions import cbv_pagination
-from apps.players.models import Player
+from core.functions import cbv_pagination
+from players.models import Player
 
 
 def base_objects(context):

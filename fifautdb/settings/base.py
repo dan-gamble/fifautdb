@@ -103,11 +103,11 @@ THIRD_PARTY_APPS = (
 
 # Apps specific for this project go here.
 LOCAL_APPS = (
-    'apps.clubs',
-    'apps.leagues',
-    'apps.nations',
-    'apps.news',
-    'apps.players',
+    'clubs',
+    'leagues',
+    'nations',
+    'news',
+    'players',
 )
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS

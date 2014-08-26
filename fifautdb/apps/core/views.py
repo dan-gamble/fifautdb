@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 # Local imports
-from apps.clubs.models import Club
+from clubs.models import Club
 
 
 def index(request):

@@ -2,7 +2,7 @@
 from django.db import models
 
 # Local imports
-from apps.players.models import Player
+from players.models import Player
 
 
 class Club(models.Model):

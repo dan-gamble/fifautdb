@@ -3,8 +3,8 @@ from django.db import models
 
 # Local imports
 from django.db.models import Avg
-from apps.leagues.models import League
-from apps.players.models import Player
+from leagues.models import League
+from players.models import Player
 
 
 class Nation(models.Model):
