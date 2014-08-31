@@ -8,7 +8,7 @@
 {% endblock subheading %}
 
 {% block controls--top %}
-    {% include "includes/detail/controls-top.html" with object=club %}
+    {% include "includes/detail/controls.html" with object=club section=top %}
 {% endblock controls--top %}
 
 {% block content %}
@@ -18,5 +18,5 @@
 {% endblock %}
 
 {% block controls--bottom %}
-    {% include "includes/detail/controls-bottom.html" with object=club %}
+    {% include "includes/detail/controls.html" with object=club section=bottom %}
 {% endblock controls--bottom %}

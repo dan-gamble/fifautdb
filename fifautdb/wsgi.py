@@ -36,6 +36,9 @@ application = get_wsgi_application()
 # from helloworld.wsgi import HelloWorldApplication
 # application = HelloWorldApplication(application)
 
+import newrelic.agent
+newrelic.agent.initialize('newrelic.ini')
+
 from django.core.wsgi import get_wsgi_application
 from dj_static import Cling
 

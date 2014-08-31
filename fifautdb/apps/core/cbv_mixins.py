@@ -1,4 +1,5 @@
 # Local imports
+from django.db.models import Q
 from core.functions import cbv_pagination
 from players.models import Player
 
@@ -75,12 +76,33 @@ class CoreDetailFilteredMixin(object):
             'def': 1,
             'gk': 0
         }
+
+        output = []
+
+        for role in self.kwargs['role_line'].split('-'):
+            output.append(role)
+
+        print output
+
         # Check if the given role line is in the dictionary because 'all'
         # throws an KeyError
-        if self.kwargs['role_line'] in role_lines:
-            context['players'] = context['players'].filter(
-                role_line=role_lines[self.kwargs['role_line']]
-            )
+        # for role in output:
+        #     if role in role_lines:
+        #         context['players'] = context['players'].filter(
+        #             role_line=role_lines[role]
+        #         )
+        #         print role
+        #         print context['players']
+
+        # Todo: Can't use output[0], [1] ofc.. Sort this shit out.
+        q_objects = Q()
+        for role in output:
+            q_objects |= Q(role_line=role_lines[role])
+
+        context['players'] = context['players'].filter(
+            q_objects
+        )
+        print context['players']
 
         role_labels = {
             'all': 'All',
@@ -90,7 +112,10 @@ class CoreDetailFilteredMixin(object):
             'gk': 'Goalkeepers',
         }
 
-        context['role_label'] = role_labels[self.kwargs['role_line']]
+        context['role_label'] = []
+        for role in output:
+            if role in role_labels:
+                context['role_label'].append(role_labels[role])
 
         # Define the available sort by keys
         sorts = {
