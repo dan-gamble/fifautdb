@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404
 from django.views.generic import ListView, DetailView
 
 # Local imports
-from core.cbv_mixins import CoreDetailMixin, CoreDetailFilteredMixin
+from core.cbv_mixins import DetailMixin, DetailFilteredMixin
 from .models import Nation
 
 
@@ -18,11 +18,11 @@ class NationListView(ListView):
         return queryset
 
 
-class NationDetailView(CoreDetailMixin, DetailView):
+class NationDetailView(DetailMixin, DetailView):
     # The template to use
     model = Nation
 
 
-class NationDetailFilteredView(CoreDetailFilteredMixin, DetailView):
+class NationDetailFilteredView(DetailFilteredMixin, DetailView):
     # The template to use
     model = Nation

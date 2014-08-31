@@ -9,16 +9,13 @@
                     <li>
                         <a href="#" data-dropdown="card-type-{{ section }}">Card Type <i class="fa fa-caret-down"></i></a>
                         <ul id="card-type-{{ section }}" class="f-dropdown" data-dropdown-content>
-                            {% with 'all inform gold silver bronze' as card_types  %}
-                                {% for ct in card_types.split %}
-                                    {% cycle 'All' 'Inform' 'Gold' 'Silver' 'Bronze' as card_type_name silent %}
-                                    <li>
-                                        <a href="{% url url_string object.slug ct role_line|default:'all' sort_by|default:'ovr' %}">
-                                            {{ card_type_name }}
-                                        </a>
-                                    </li>
-                                {% endfor %}
-                            {% endwith %}
+                            {% for key, value in card_type_labels.items %}
+                                <li>
+                                    <a href="{% url url_string object.slug key role_line|default:'all' sort_by|default:'ovr' %}">
+                                        {{ value }}
+                                    </a>
+                                </li>
+                            {% endfor %}
                         </ul>
                     </li>
                     {% if card_type %}
@@ -30,24 +27,27 @@
                     <li>
                         <a href="#" data-dropdown="role-line-{{ section }}">Role Line <i class="fa fa-caret-down"></i></a>
                         <ul id="role-line-{{ section }}" class="f-dropdown" data-dropdown-content>
-                            {% with 'all att mid def gk' as role_lines  %}
-                                {% for rl in role_lines.split %}
-                                    {% cycle 'All' 'ATT' 'MID' 'DEF' 'GK' as role_lines_name silent %}
-                                    <li>
-                                        <a href="{% url url_string object.slug card_type|default:'all' rl sort_by|default:'ovr' %}">
-                                            {{ role_lines_name }}
-                                        </a>
-                                    </li>
-                                {% endfor %}
-                            {% endwith %}
+                            {% for key, value in role_labels.items %}
+                                <li>
+                                    <a href="{% url url_string object.slug card_type|default:'all' key sort_by|default:'ovr' %}">
+                                        {{ value }}
+                                    </a>
+                                </li>
+                            {% endfor %}
                         </ul>
                     </li>
-                    {% if role_line %}
+                    {% if role_line != 'all' %}
                         <li class="active">
                             <a href="#">
                                 {% for role in role_label %}
                                     {{ role }}{% if forloop.first and role_label|length <= 1 or forloop.last %}{% else %}, {% endif %}
                                 {% endfor %}
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="active">
+                            <a href="#">
+                                {{ role_label }}
                             </a>
                         </li>
                     {% endif %}
@@ -57,20 +57,37 @@
                     <li>
                         <a href="#" data-dropdown="sort-by-{{ section }}">Sort by <i class="fa fa-caret-down"></i></a>
                         <ul id="sort-by-{{ section }}" class="f-dropdown" data-dropdown-content>
-                            {% with 'ovr att1 att2 att3 att4 att5 att6' as sorts  %}
-                                {% for sort in sorts.split %}
-                                    {% ifequal role_line 'gk' %}
-                                        {% cycle 'Overall' 'Diving' 'Handling' 'Kicking' 'Reflexes' 'Speed' 'Positioning' as sorts_name silent %}
-                                    {% else %}
-                                        {% cycle 'Overall' 'Pace' 'Shooting' 'Passing' 'Dribbling' 'Defending' 'Heading' as sorts_name silent %}
-                                    {% endifequal %}
+                            {% ifequal role_line 'gk' %}
+                                {% for key, value in sort_labels_gk.items %}
                                     <li>
-                                        <a href="{% url url_string object.slug card_type|default:'all' role_line|default:'all' sort %}">
-                                            {{ sorts_name }}
+                                        <a href="{% url url_string object.slug card_type|default:'all' role_line|default:'all' key %}">
+                                            {{ value }}
                                         </a>
                                     </li>
                                 {% endfor %}
-                            {% endwith %}
+                            {% else %}
+                                {% for key, value in sort_labels_else.items %}
+                                    <li>
+                                        <a href="{% url url_string object.slug card_type|default:'all' role_line|default:'all' key %}">
+                                            {{ value }}
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            {% endifequal %}
+{#                            {% with 'ovr att1 att2 att3 att4 att5 att6' as sorts  %}#}
+{#                                {% for sort in sorts.split %}#}
+{#                                    {% ifequal role_line 'gk' %}#}
+{#                                        {% cycle 'Overall' 'Diving' 'Handling' 'Kicking' 'Reflexes' 'Speed' 'Positioning' as sorts_name silent %}#}
+{#                                    {% else %}#}
+{#                                        {% cycle 'Overall' 'Pace' 'Shooting' 'Passing' 'Dribbling' 'Defending' 'Heading' as sorts_name silent %}#}
+{#                                    {% endifequal %}#}
+{#                                    <li>#}
+{#                                        <a href="{% url url_string object.slug card_type|default:'all' role_line|default:'all' sort %}">#}
+{#                                            {{ sorts_name }}#}
+{#                                        </a>#}
+{#                                    </li>#}
+{#                                {% endfor %}#}
+{#                            {% endwith %}#}
                         </ul>
                     </li>
                     {% if sort_by %}

@@ -17,3 +17,15 @@ def cbv_pagination(self, context, query, per_page, cbv_context):
     except EmptyPage:
         # If page is out of range (e.g. 9999), deliver last page of results.
         context[cbv_context] = paginator.page(paginator.num_pages)
+
+
+def base_objects(context):
+    # Object types paired up to available Models
+    object_types = {
+        'Club': 'club',
+        'League': 'league',
+        'Nation': 'nation'
+    }
+    # Gets the Object Type from the passed model and defines the base filter
+    filters = object_types[context['object'].__class__.__name__] + '_id'
+    return filters

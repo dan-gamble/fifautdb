@@ -2,7 +2,7 @@
 from django.views.generic import ListView, DetailView
 
 # Local imports
-from core.cbv_mixins import CoreDetailMixin, CoreDetailFilteredMixin
+from core.cbv_mixins import DetailMixin, DetailFilteredMixin
 from .models import Club
 
 
@@ -19,11 +19,11 @@ class ClubListView(ListView):
         return queryset
 
 
-class ClubDetailView(CoreDetailMixin, DetailView):
+class ClubDetailView(DetailMixin, DetailView):
     # Define the model for the CBV
     model = Club
 
 
-class ClubDetailFilteredView(CoreDetailFilteredMixin, DetailView):
+class ClubDetailFilteredView(DetailFilteredMixin, DetailView):
     # Define the model for the CBV
     model = Club

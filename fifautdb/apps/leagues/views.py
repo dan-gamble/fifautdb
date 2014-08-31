@@ -2,7 +2,7 @@
 from django.views.generic import DetailView, ListView
 
 # Local imports
-from core.cbv_mixins import CoreDetailMixin, CoreDetailFilteredMixin
+from core.cbv_mixins import DetailMixin, DetailFilteredMixin
 from .models import League
 
 
@@ -11,11 +11,11 @@ class LeagueListView(ListView):
     model = League
 
 
-class LeagueDetailView(CoreDetailMixin, DetailView):
+class LeagueDetailView(DetailMixin, DetailView):
     # Define the model for the CBV
     model = League
 
 
-class LeagueDetailFilteredView(CoreDetailFilteredMixin, DetailView):
+class LeagueDetailFilteredView(DetailFilteredMixin, DetailView):
     # Define the model for the CBV
     model = League
