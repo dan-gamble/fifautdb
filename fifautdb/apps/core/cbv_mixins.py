@@ -7,41 +7,11 @@ from core.functions import cbv_pagination, base_objects
 from players.models import Player
 
 
-class DetailMixin(object):
+class FilterLabels(object):
 
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
-        context = super(DetailMixin, self).get_context_data(**kwargs)
-
-        # Pull all the players that belong to the object_type
-        player_list = Player.objects.filter(
-            **{base_objects(context): context['object'].asset_id}
-        ).select_related(
-            'club',
-            'league',
-            'nation'
-        )
-
-        # Create pagination
-        cbv_pagination(self, context, player_list, 28, 'players')
-
-        return context
-
-
-class DetailFilteredMixin(object):
-
-    def get_context_data(self, **kwargs):
-        # Call the base implementation first to get a context
-        context = super(DetailFilteredMixin, self).get_context_data(**kwargs)
-
-        # Create the base queryset for which we filter on
-        context['players'] = Player.objects.filter(
-            **{base_objects(context): context['object'].asset_id}
-        ).select_related(
-            'club',
-            'league',
-            'nation'
-        )
+        context = super(FilterLabels, self).get_context_data(**kwargs)
 
         # Ordered Dictionaries created for the 'controls' in the Object
         # templates
@@ -80,6 +50,45 @@ class DetailFilteredMixin(object):
             ('att5', 'Defending'),
             ('att6', 'Heading')
         ])
+
+        return context
+
+
+class DetailMixin(FilterLabels):
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super(DetailMixin, self).get_context_data(**kwargs)
+
+        # Pull all the players that belong to the object_type
+        player_list = Player.objects.filter(
+            **{base_objects(context): context['object'].asset_id}
+        ).select_related(
+            'club',
+            'league',
+            'nation'
+        )
+
+        # Create pagination
+        cbv_pagination(self, context, player_list, 28, 'players')
+
+        return context
+
+
+class DetailFilteredMixin(FilterLabels):
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super(DetailFilteredMixin, self).get_context_data(**kwargs)
+
+        # Create the base queryset for which we filter on
+        context['players'] = Player.objects.filter(
+            **{base_objects(context): context['object'].asset_id}
+        ).select_related(
+            'club',
+            'league',
+            'nation'
+        )
 
         # Dictionaries to check kwargs against to created queryset filters
         # Card types
