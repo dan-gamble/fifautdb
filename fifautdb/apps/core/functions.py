@@ -1,4 +1,12 @@
+# Core imports
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+
+# Object types paired up to available Models
+OBJECT_TYPES = {
+    'Club': 'club',
+    'League': 'league',
+    'Nation': 'nation'
+}
 
 
 def cbv_pagination(self, context, query, per_page, cbv_context):
@@ -20,12 +28,13 @@ def cbv_pagination(self, context, query, per_page, cbv_context):
 
 
 def base_objects(context):
-    # Object types paired up to available Models
-    object_types = {
-        'Club': 'club',
-        'League': 'league',
-        'Nation': 'nation'
-    }
     # Gets the Object Type from the passed model and defines the base filter
-    filters = object_types[context['object'].__class__.__name__] + '_id'
-    return filters
+    base_object = OBJECT_TYPES[context['object'].__class__.__name__]
+
+    return base_object
+
+
+def base_objects_add_id(context):
+    # Gets the Object Type from the passed model and defines the base filter
+    base_object = OBJECT_TYPES[context['object'].__class__.__name__] + '_id'
+    return base_object
