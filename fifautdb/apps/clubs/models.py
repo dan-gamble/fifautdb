@@ -1,5 +1,6 @@
 # Core imports
 from django.db import models
+from django.utils.functional import cached_property
 
 # Local imports
 from players.models import Player
@@ -57,9 +58,11 @@ class Club(models.Model):
     def get_class_name(self):
         return self.__class__.__name__
 
+    @cached_property
     def count_players(self):
         return Player.objects.filter(club_id=self.asset_id).count()
 
+    @cached_property
     def count_players_bronze(self):
         return Player.objects.filter(
             club_id=self.asset_id,
@@ -68,6 +71,7 @@ class Club(models.Model):
             card_type__gte=2
         ).count()
 
+    @cached_property
     def count_players_silver(self):
         return Player.objects.filter(
             club_id=self.asset_id,
@@ -76,6 +80,7 @@ class Club(models.Model):
             card_type__gte=2
         ).count()
 
+    @cached_property
     def count_players_gold(self):
         return Player.objects.filter(
             club_id=self.asset_id,
@@ -114,6 +119,7 @@ class Club(models.Model):
             role_line=3
         ).count()
 
+    @cached_property
     def players_average(self):
         return Player.objects.filter(
             club_id=self.asset_id,

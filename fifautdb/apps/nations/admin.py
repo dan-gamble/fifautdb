@@ -1,11 +1,15 @@
-# Core imports
+# Core
 from django.contrib import admin
 
-# Local imports
+# Local
 from .models import Nation
 
 
+@admin.register(Nation)
 class NationAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug': ('name',), }
-
-admin.site.register(Nation, NationAdmin)
+    # fieldsets = (
+    #     ('Nation options', {
+    #         'fields': ('asset_id', 'name', 'name_abbr3')
+    #     }),
+    # )
+    prepopulated_fields = {'slug': ('name', ), }

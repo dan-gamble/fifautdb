@@ -1,18 +1,16 @@
-# Core imports
+# Django imports
 from django.conf import settings
 from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.views.generic import TemplateView
-admin.autodiscover()
+from django.contrib.auth.forms import UserCreationForm
+from django.views.generic import TemplateView, CreateView
 
-# Local imports
-# from apps.core import views
+admin.autodiscover()
 
 urlpatterns = patterns(
     '',
     url(r'^$', TemplateView.as_view(template_name='base.html'), name='index'),
-    # url(r'^$', views.index, name='index'),
     # Admin URLS
     url(r'^admin/', include(admin.site.urls)),
     # Clubs URLS
@@ -23,7 +21,27 @@ urlpatterns = patterns(
     url(r'^nations/', include('nations.urls', namespace='nations')),
     # Players URLS
     url(r'^players/', include('players.urls', namespace='players')),
-    # url(r'^/app/', include('apps.app.urls', namespace='app')),
+    # Account handling
+    url(
+        r'login/',
+        'django.contrib.auth.views.login',
+        {'template_name': 'registration/login.html'},
+        name='login',
+    ),
+    url(
+        r'logout/',
+        'django.contrib.auth.views.logout',
+        {'next_page': 'index'},
+        name='logout',
+    ),
+    url(
+        r'^accounts/register/',
+        CreateView.as_view(
+            template_name='register.html',
+            form_class=UserCreationForm,
+            success_url='index'
+        ),
+    ),
 )
 
 if settings.DEBUG:

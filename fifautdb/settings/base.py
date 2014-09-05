@@ -2,6 +2,7 @@
 
 import os
 from sys import path
+from django.core.urlresolvers import reverse_lazy
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -103,6 +104,7 @@ THIRD_PARTY_APPS = (
 
 # Apps specific for this project go here.
 LOCAL_APPS = (
+    'core',
     'clubs',
     'leagues',
     'nations',
@@ -137,3 +139,21 @@ LOGGING = {
 }
 
 WSGI_APPLICATION = 'fifautdb.wsgi.application'
+
+LOGIN_URL = reverse_lazy('login')
+LOGIN_REDIRECT_URL = reverse_lazy('index')
+
+# LOGIN_WHITELIST = [
+    # reverse_lazy('login'),
+    # reverse_lazy('logout'),
+    # reverse_lazy('application:register'),
+    # reverse_lazy('application:register_success'),
+    # reverse_lazy('admin:index'),
+    # '/register/confirm/',
+    # '/password-reset/',
+    # '/password-reset-done/',
+    # '/reset-password/',
+    # '/reset/done/',
+# ]
+
+AUTO_SLUGIFY_FUNCTION = ''

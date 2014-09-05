@@ -3,36 +3,44 @@
 
 {% block content %}
 
-  <div class="medium-24 columns">
+    <div class="medium-24 columns">
 
-    {% include "includes/pagination.html" %}
+        {% include "includes/pagination.html" %}
 
-    <table class="medium-24">
-      <thead>
-        <tr>
-          <th>Nation</th>
-          <th>Leagues</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for nation in nation_list %}
+        <table class="medium-24">
+            <thead>
+                <tr>
+                    <th>Nation</th>
+                    <th class="text-center">Avg. Rating</th>
+                    <th class="text-center">Players</th>
+                    <th class="text-center">Inform</th>
+                    <th class="text-center">Gold</th>
+                    <th class="text-center">Silver</th>
+                    <th class="text-center">Bronze</th>
+                </tr>
+            </thead>
+            <tbody>
 
-          <tr>
-            <td>
-              <img alt="" src="{% static 'img/nations/' %}{{ nation.asset_id }}.png" width="30">
-              <a href="{{ nation.get_absolute_url }}">{{ nation.name }}</a> ({{ nation.name_abbr3 }})
-            </td>
-            <td>
-              {{ nation.leagues.all|length }}
-            </td>
-          </tr>
+                {% for nation in nation_list %}
+                    <tr>
+                        <td>
+                            <img alt="" src="{% static 'img/nations/' %}{{ nation.asset_id }}.png" width="30">
+                            <a href="{{ nation.get_absolute_url }}">{{ nation.name }}</a> ({{ nation.name_abbr3 }})
+                        </td>
+                        <td class="text-center">{{ nation.players_average_rating|default:"0" }}</td>
+                        <td class="text-center">{{ nation.players_count }}</td>
+                        <td class="text-center">{{ nation.players_inform }}</td>
+                        <td class="text-center">{{ nation.players_gold }}</td>
+                        <td class="text-center">{{ nation.players_silver }}</td>
+                        <td class="text-center">{{ nation.players_bronze }}</td>
+                    </tr>
+                {% endfor %}
 
-        {% endfor %}
-      </tbody>
-    </table>
+            </tbody>
+        </table>
 
-    {% include "includes/pagination.html" %}
+        {% include "includes/pagination.html" %}
 
-  </div> <!-- medium-24 columns -->
+    </div> <!-- medium-24 columns -->
 
 {% endblock %}

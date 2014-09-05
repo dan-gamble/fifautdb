@@ -29,6 +29,7 @@ INSTALLED_APPS += (
     'django_extensions',
     'debug_toolbar',
     'template_timings_panel',
+    'devserver',
 )
 
 INTERNAL_IPS = ('127.0.0.1',)
@@ -55,3 +56,15 @@ DEBUG_TOOLBAR_PANELS = (
 )
 
 CORS_ORIGIN_ALLOW_ALL = True
+
+DEVSERVER_MODULES = (
+    'devserver.modules.sql.SQLRealTimeModule',
+    'devserver.modules.sql.SQLSummaryModule',
+    'devserver.modules.profile.ProfileSummaryModule',
+
+    # Modules not enabled by default
+    'devserver.modules.ajax.AjaxDumpModule',
+    'devserver.modules.profile.MemoryUseModule',
+    'devserver.modules.cache.CacheSummaryModule',
+    'devserver.modules.profile.LineProfilerModule',
+)
