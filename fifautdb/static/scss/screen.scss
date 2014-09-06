@@ -1,7 +1,7 @@
 // Make sure the charset is set appropriately
 @charset "UTF-8";
 
-//  Core Foundation imports
+// Core Foundation imports
 @import "foundation/normalize";
 @import "compass";
 
@@ -9,9 +9,8 @@
 @import "foundation/settings";
 @import "font-awesome/font-awesome";
 
-// Behold, here are all the Foundation components.
-@import
-    "foundation/foundation/components/grid",
+// Behold, here are all the Foundation components
+@import "foundation/foundation/components/grid",
     "foundation/foundation/components/accordion",
     "foundation/foundation/components/alert-boxes",
     "foundation/foundation/components/block-grid",
@@ -29,7 +28,7 @@
     "foundation/foundation/components/labels",
     "foundation/foundation/components/magellan",
     "foundation/foundation/components/orbit",
-    // "foundation/foundation/components/pagination",
+    "foundation/foundation/components/pagination",
     "foundation/foundation/components/panels",
     "foundation/foundation/components/pricing-tables",
     "foundation/foundation/components/progress-bars",

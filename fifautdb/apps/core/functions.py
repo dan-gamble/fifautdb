@@ -27,14 +27,14 @@ def cbv_pagination(self, context, query, per_page, cbv_context):
         context[cbv_context] = paginator.page(paginator.num_pages)
 
 
-def base_objects(context):
+def context_base_objects(context):
     # Gets the Object Type from the passed model and defines the base filter
     base_object = OBJECT_TYPES[context['object'].__class__.__name__]
 
     return base_object
 
 
-def base_objects_add_id(context):
+def context_base_objects_add_id(context):
     # Gets the Object Type from the passed model and defines the base filter
     base_object = OBJECT_TYPES[context['object'].__class__.__name__] + '_id'
     return base_object

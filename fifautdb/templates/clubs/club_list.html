@@ -22,12 +22,12 @@
                     <tr>
                         <td><a href="{{ club.get_absolute_url }}">{{ club.name }}</a></td>
                         <td><a href="{{ club.league.get_absolute_url }}">{{ club.league.name_abbr15 }}</a></td>
-                        <td class="text-center">{{ club.players_average|floatformat:"1" }}</td>
-                        <td class="text-center">{{ club.count_players }}</td>
-                        <td class="text-center">{{ club.count_players_if }}</td>
-                        <td class="text-center">{{ club.count_players_gold }}</td>
-                        <td class="text-center">{{ club.count_players_silver }}</td>
-                        <td class="text-center">{{ club.count_players_bronze }}</td>
+                        <td class="text-center">{{ club.players_average_rating|floatformat:"1" }}</td>
+                        <td class="text-center">{{ club.players_count }}</td>
+                        <td class="text-center">{{ club.players_inform }}</td>
+                        <td class="text-center">{{ club.players_gold }}</td>
+                        <td class="text-center">{{ club.players_silver }}</td>
+                        <td class="text-center">{{ club.players_bronze }}</td>
                     </tr>
                 {% endfor %}
 

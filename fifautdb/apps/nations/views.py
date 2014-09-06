@@ -14,7 +14,13 @@ class NationListView(ListView):
     paginate_by = 50
 
     def get_queryset(self):
-        queryset = Nation.objects.all().prefetch_related('leagues')
+        queryset = Nation.objects.all().prefetch_related(
+            'leagues'
+        ).exclude(
+            players_count__exact=0
+        ).order_by(
+            '-players_count'
+        )
         return queryset
 
 

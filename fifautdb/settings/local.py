@@ -29,7 +29,6 @@ INSTALLED_APPS += (
     'django_extensions',
     'debug_toolbar',
     'template_timings_panel',
-    'devserver',
 )
 
 INTERNAL_IPS = ('127.0.0.1',)
