@@ -9133,6 +9133,74 @@ kbd {
     display: none;
   }
 }
+/* line 149, ../scss/foundation/foundation/components/_pagination.scss */
+ul.pagination {
+  display: block;
+  min-height: 1.5rem;
+  margin-left: -0.3125rem;
+}
+/* line 104, ../scss/foundation/foundation/components/_pagination.scss */
+ul.pagination li {
+  height: 1.5rem;
+  color: #222222;
+  font-size: 0.875rem;
+  margin-left: 0.3125rem;
+}
+/* line 110, ../scss/foundation/foundation/components/_pagination.scss */
+ul.pagination li a, ul.pagination li button {
+  display: block;
+  padding: 0.0625rem 0.625rem 0.0625rem;
+  color: #999999;
+  background: none;
+  border-radius: 5px;
+  font-weight: normal;
+  font-size: 1em;
+  line-height: inherit;
+  transition: background-color 300ms ease-out;
+}
+/* line 122, ../scss/foundation/foundation/components/_pagination.scss */
+ul.pagination li:hover a,
+ul.pagination li a:focus, ul.pagination li:hover button,
+ul.pagination li button:focus {
+  background: #e6e6e6;
+}
+/* line 51, ../scss/foundation/foundation/components/_pagination.scss */
+ul.pagination li.unavailable a, ul.pagination li.unavailable button {
+  cursor: default;
+  color: #999999;
+}
+/* line 55, ../scss/foundation/foundation/components/_pagination.scss */
+ul.pagination li.unavailable:hover a, ul.pagination li.unavailable a:focus, ul.pagination li.unavailable:hover button, ul.pagination li.unavailable button:focus {
+  background: transparent;
+}
+/* line 68, ../scss/foundation/foundation/components/_pagination.scss */
+ul.pagination li.current a, ul.pagination li.current button {
+  background: #3a3a4e;
+  color: white;
+  font-weight: bold;
+  cursor: default;
+}
+/* line 74, ../scss/foundation/foundation/components/_pagination.scss */
+ul.pagination li.current a:hover, ul.pagination li.current a:focus, ul.pagination li.current button:hover, ul.pagination li.current button:focus {
+  background: #3a3a4e;
+}
+/* line 136, ../scss/foundation/foundation/components/_pagination.scss */
+ul.pagination li {
+  float: left;
+  display: block;
+}
+
+/* Pagination centred wrapper */
+/* line 154, ../scss/foundation/foundation/components/_pagination.scss */
+.pagination-centered {
+  text-align: center;
+}
+/* line 136, ../scss/foundation/foundation/components/_pagination.scss */
+.pagination-centered ul.pagination li {
+  float: none;
+  display: inline-block;
+}
+
 /* Panels */
 /* line 77, ../scss/foundation/foundation/components/_panels.scss */
 .panel {
@@ -14819,55 +14887,55 @@ body .ui-tooltip {
   background: #850000;
 }
 
-/* line 67, ../scss/screen.scss */
+/* line 66, ../scss/screen.scss */
 h1 {
   margin-bottom: 1.05rem;
 }
 
-/* line 67, ../scss/screen.scss */
+/* line 66, ../scss/screen.scss */
 h2 {
   margin-bottom: 0.9625rem;
 }
 
-/* line 67, ../scss/screen.scss */
+/* line 66, ../scss/screen.scss */
 h3 {
   margin-bottom: 0.875rem;
 }
 
-/* line 67, ../scss/screen.scss */
+/* line 66, ../scss/screen.scss */
 h4 {
   margin-bottom: 0.7875rem;
 }
 
-/* line 67, ../scss/screen.scss */
+/* line 66, ../scss/screen.scss */
 h5 {
   margin-bottom: 0.7rem;
 }
 
-/* line 67, ../scss/screen.scss */
+/* line 66, ../scss/screen.scss */
 h6 {
   margin-bottom: 0.7rem;
 }
 
-/* line 75, ../scss/screen.scss */
+/* line 74, ../scss/screen.scss */
 body {
   background: #23232f;
 }
 
-/* line 76, ../scss/screen.scss */
+/* line 75, ../scss/screen.scss */
 .content-container {
   background: white;
   padding: 1.25rem 0;
 }
 
-/* line 78, ../scss/screen.scss */
+/* line 77, ../scss/screen.scss */
 .f-dropdown {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
 }
 
-/* line 80, ../scss/screen.scss */
+/* line 79, ../scss/screen.scss */
 .club-card-gold-rare {
   background: url("/static/img/cards/large-gold-rare.png") no-repeat;
   -webkit-background-size: 135px 200px;
@@ -14875,7 +14943,7 @@ body {
   height: 200px;
   width: 135px;
 }
-/* line 85, ../scss/screen.scss */
+/* line 84, ../scss/screen.scss */
 .club-card-gold-rare .club-card-title,
 .club-card-gold-rare .club-card-name {
   width: 100%;
@@ -14884,24 +14952,24 @@ body {
   position: absolute;
   top: 8px;
 }
-/* line 95, ../scss/screen.scss */
+/* line 94, ../scss/screen.scss */
 .club-card-gold-rare .club-card-name {
   top: auto;
   bottom: 34px;
 }
-/* line 99, ../scss/screen.scss */
+/* line 98, ../scss/screen.scss */
 .club-card-gold-rare .club-card-badge {
   position: absolute;
   top: 70px;
   left: 15px;
 }
-/* line 104, ../scss/screen.scss */
+/* line 103, ../scss/screen.scss */
 .club-card-gold-rare .club-card-nation {
   position: absolute;
   bottom: 65px;
   left: 15px;
 }
-/* line 109, ../scss/screen.scss */
+/* line 108, ../scss/screen.scss */
 .club-card-gold-rare .club-card-shirt {
   position: absolute;
   top: 50px;

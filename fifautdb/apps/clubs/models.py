@@ -43,6 +43,50 @@ class Club(models.Model):
         blank=True
     )
 
+    players_count = models.IntegerField(
+        blank=True,
+        null=True
+    )
+
+    players_average_rating = models.IntegerField(
+        blank=True,
+        null=True
+    )
+
+    players_inform = models.IntegerField(
+        blank=True,
+        null=True
+    )
+    players_gold = models.IntegerField(
+        blank=True,
+        null=True
+    )
+    players_silver = models.IntegerField(
+        blank=True,
+        null=True
+    )
+    players_bronze = models.IntegerField(
+        blank=True,
+        null=True
+    )
+
+    players_gk = models.IntegerField(
+        blank=True,
+        null=True
+    )
+    players_def = models.IntegerField(
+        blank=True,
+        null=True
+    )
+    players_mid = models.IntegerField(
+        blank=True,
+        null=True
+    )
+    players_att = models.IntegerField(
+        blank=True,
+        null=True
+    )
+
     @models.permalink
     def get_absolute_url(self):
         return 'clubs:club', (), {
@@ -57,72 +101,3 @@ class Club(models.Model):
 
     def get_class_name(self):
         return self.__class__.__name__
-
-    @cached_property
-    def count_players(self):
-        return Player.objects.filter(club_id=self.asset_id).count()
-
-    @cached_property
-    def count_players_bronze(self):
-        return Player.objects.filter(
-            club_id=self.asset_id,
-            overall_rating__lte=64
-        ).exclude(
-            card_type__gte=2
-        ).count()
-
-    @cached_property
-    def count_players_silver(self):
-        return Player.objects.filter(
-            club_id=self.asset_id,
-            overall_rating__range=(65, 74)
-        ).exclude(
-            card_type__gte=2
-        ).count()
-
-    @cached_property
-    def count_players_gold(self):
-        return Player.objects.filter(
-            club_id=self.asset_id,
-            overall_rating__gte=75
-        ).exclude(
-            card_type__gte=2
-        ).count()
-
-    def count_players_if(self):
-        return Player.objects.filter(
-            club_id=self.asset_id,
-            card_type__gte=2
-        ).count()
-
-    def count_players_goalkeepers(self):
-        return Player.objects.filter(
-            club_id=self.asset_id,
-            role_line=0
-        ).count()
-
-    def count_players_defenders(self):
-        return Player.objects.filter(
-            club_id=self.asset_id,
-            role_line=1
-        ).count()
-
-    def count_players_midfielders(self):
-        return Player.objects.filter(
-            club_id=self.asset_id,
-            role_line=2
-        ).count()
-
-    def count_players_forwards(self):
-        return Player.objects.filter(
-            club_id=self.asset_id,
-            role_line=3
-        ).count()
-
-    @cached_property
-    def players_average(self):
-        return Player.objects.filter(
-            club_id=self.asset_id,
-        ).aggregate(
-            models.Avg('overall_rating')
-        ).values()[0]

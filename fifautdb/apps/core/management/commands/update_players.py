@@ -1,58 +1,77 @@
-#!/usr/bin/env python
 # Django
 from django.core.management.base import BaseCommand
 from django.db import models
+from django.db.models.loading import get_model
 
 # Local
-from nations.models import Nation
 from players.models import Player
-# from core.functions import cbv_pagination, base_objects_add_id, base_objects
 
 
 class Command(BaseCommand):
 
     def handle(self, *args, **options):
 
-        # for arg in args:
-        #     try:
-        for nation in Nation.objects.all():
+        for arg in args:
 
-            nation.players_count = Player.objects.filter(
-                nation_id=nation.asset_id
-            ).count()
+            '''
+            Create the lower case model name and the column on
+            the player table which we filter on
+            '''
+            object_types = {
+                'Clubs': {
+                    'name': 'club',
+                    'id': 'club_id'
+                },
+                'Leagues': {
+                    'name': 'league',
+                    'id': 'league_id'
+                },
+                'Nations': {
+                    'name': 'nation',
+                    'id': 'nation_id'
+                }
+            }
 
-            nation.players_inform = Player.objects.filter(
-                nation_id=nation.asset_id,
-                card_type__gte=2
-            ).count()
+            # Get the model from the passed argument
+            model = get_model(arg.lower(), object_types[arg]['name'])
 
-            nation.players_gold = Player.objects.filter(
-                nation_id=nation.asset_id,
-                overall_rating__gte=75
-            ).exclude(
-                card_type__gte=2
-            ).count()
+            for model_object in model.objects.all():
 
-            nation.players_silver = Player.objects.filter(
-                nation_id=nation.asset_id,
-                overall_rating__range=(65, 74)
-            ).exclude(
-                card_type__gte=2
-            ).count()
+                queryset = Player.objects.filter(
+                    **{object_types[arg]['id']: model_object.asset_id}
+                )
 
-            nation.players_bronze = Player.objects.filter(
-                nation_id=nation.asset_id,
-                overall_rating__lte=64
-            ).exclude(
-                card_type__gte=2
-            ).count()
+                # Create the base queryset we will filter on
+                model_object.players_count = queryset.count()
 
-            nation.players_average_rating = Player.objects.filter(
-                nation_id=nation.asset_id,
-            ).aggregate(
-                models.Avg('overall_rating')
-            ).values()[0]
+                model_object.players_inform = queryset.filter(
+                    card_type__gte=2
+                ).count()
 
-            print nation
+                model_object.players_gold = queryset.filter(
+                    overall_rating__gte=75
+                ).exclude(
+                    card_type__gte=2
+                ).count()
 
-            nation.save()
+                model_object.players_silver = queryset.filter(
+                    overall_rating__range=(65, 74)
+                ).exclude(
+                    card_type__gte=2
+                ).count()
+
+                model_object.players_bronze = queryset.filter(
+                    overall_rating__lte=64
+                ).exclude(
+                    card_type__gte=2
+                ).count()
+
+                model_object.players_average_rating = list(queryset.aggregate(
+                    models.Avg('overall_rating')
+                ).values())[0]
+
+                print(model_object.players_average_rating)
+
+                model_object.save()
+            else:
+                print('All models updated :)')

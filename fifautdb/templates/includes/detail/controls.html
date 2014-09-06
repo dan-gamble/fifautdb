@@ -1,11 +1,7 @@
 <section class="controls--{{ section }}">
     <div class="row">
-
-
         <div class="medium-24 columns">
-
             <ul class="list--inline--buttons left">
-                <li class="control__label">Filters:</li>
                 <li>
                     <a href="#" data-dropdown="card-type-{{ section }}">Card Type <i class="fa fa-caret-down"></i></a>
                     <ul id="card-type-{{ section }}" class="f-dropdown" data-dropdown-content>
@@ -76,20 +72,6 @@
                                 </li>
                             {% endfor %}
                         {% endifequal %}
-                        {#                            {% with 'ovr att1 att2 att3 att4 att5 att6' as sorts  %}#}
-                        {#                                {% for sort in sorts.split %}#}
-                        {#                                    {% ifequal role_line 'gk' %}#}
-                        {#                                        {% cycle 'Overall' 'Diving' 'Handling' 'Kicking' 'Reflexes' 'Speed' 'Positioning' as sorts_name silent %}#}
-                        {#                                    {% else %}#}
-                        {#                                        {% cycle 'Overall' 'Pace' 'Shooting' 'Passing' 'Dribbling' 'Defending' 'Heading' as sorts_name silent %}#}
-                        {#                                    {% endifequal %}#}
-                        {#                                    <li>#}
-                        {#                                        <a href="{% url url_string object.slug card_type|default:'all' role_line|default:'all' sort %}">#}
-                        {#                                            {{ sorts_name }}#}
-                        {#                                        </a>#}
-                        {#                                    </li>#}
-                        {#                                {% endfor %}#}
-                        {#                            {% endwith %}#}
                     </ul>
                 </li>
                 {% if sort_by %}
@@ -120,8 +102,6 @@
                     {% endif %}
                 {% endif %}
             </ul>
-
         </div>
-
     </div>
 </section>

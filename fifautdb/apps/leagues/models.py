@@ -35,6 +35,51 @@ class League(models.Model):
         max_length=50
     )
 
+    players_count = models.IntegerField(
+        blank=True,
+        null=True
+    )
+
+    players_average_rating = models.IntegerField(
+        blank=True,
+        null=True
+    )
+
+    players_inform = models.IntegerField(
+        blank=True,
+        null=True
+    )
+    players_gold = models.IntegerField(
+        blank=True,
+        null=True
+    )
+    players_silver = models.IntegerField(
+        blank=True,
+        null=True
+    )
+    players_bronze = models.IntegerField(
+        blank=True,
+        null=True
+    )
+
+    players_gk = models.IntegerField(
+        blank=True,
+        null=True
+    )
+    players_def = models.IntegerField(
+        blank=True,
+        null=True
+    )
+    players_mid = models.IntegerField(
+        blank=True,
+        null=True
+    )
+    players_att = models.IntegerField(
+        blank=True,
+        null=True
+    )
+
+
     @models.permalink
     def get_absolute_url(self):
         return 'leagues:league', (), {

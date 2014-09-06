@@ -4,27 +4,37 @@
 {% block content %}
 
   <div class="medium-24 columns">
+      <table class="medium-24">
+          <thead>
+              <tr>
+                  <th>League</th>
+                  <th class="text-center">Avg. Rating</th>
+                  <th class="text-center">Players</th>
+                  <th class="text-center">Inform</th>
+                  <th class="text-center">Gold</th>
+                  <th class="text-center">Silver</th>
+                  <th class="text-center">Bronze</th>
+              </tr>
+          </thead>
+          <tbody>
 
-    <table class="medium-24">
-      <thead>
-        <tr>
-          <th>League</th>
-        </tr>
-      </thead>
-      <tbody>
+              {% for league in league_list %}
+                  <tr>
+                      <td>
+                          <img alt="" src="{% static 'img/leagues/' %}{{ league.asset_id }}.png" width="50">
+                          <a href="{{ league.get_absolute_url }}">{{ league.name }}</a>
+                      </td>
+                      <td class="text-center">{{ league.players_average_rating|floatformat:"1" }}</td>
+                      <td class="text-center">{{ league.players_count }}</td>
+                      <td class="text-center">{{ league.players_inform }}</td>
+                      <td class="text-center">{{ league.players_gold }}</td>
+                      <td class="text-center">{{ league.players_silver }}</td>
+                      <td class="text-center">{{ league.players_bronze }}</td>
+                  </tr>
+              {% endfor %}
 
-        {% for league in league_list %}
-          <tr>
-            <td>
-              <img alt="" src="{% static 'img/leagues/' %}{{ league.asset_id }}.png" width="50">
-              <a href="{{ league.get_absolute_url }}">{{ league.name_abbr15 }}</a>
-            </td>
-          </tr>
-        {% endfor %}
-
-      </tbody>
-    </table>
-
+          </tbody>
+      </table>
   </div> <!-- medium-24 columns -->
 
 

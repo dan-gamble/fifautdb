@@ -3,7 +3,7 @@ from django.db.models import Q
 from collections import OrderedDict
 
 # Local imports
-from core.functions import cbv_pagination, base_objects_add_id, base_objects
+from core.functions import cbv_pagination, context_base_objects_add_id, context_base_objects
 from players.models import Player
 
 
@@ -53,7 +53,7 @@ class FilterLabels(object):
 
         # url_string to create 'model:model_filter' for each object
         context['url_string'] = '{cls}s:{cls}_filter'.format(
-            cls=base_objects(context)
+            cls=context_base_objects(context)
         ).lower()
 
         return context
@@ -67,7 +67,7 @@ class DetailMixin(FilterLabels):
 
         # Pull all the players that belong to the object_type
         player_list = Player.objects.filter(
-            **{base_objects_add_id(context): context['object'].asset_id}
+            **{context_base_objects_add_id(context): context['object'].asset_id}
         ).select_related(
             'club',
             'league',
@@ -88,7 +88,7 @@ class DetailFilteredMixin(FilterLabels):
 
         # Create the base queryset for which we filter on
         context['players'] = Player.objects.filter(
-            **{base_objects_add_id(context): context['object'].asset_id}
+            **{context_base_objects_add_id(context): context['object'].asset_id}
         ).select_related(
             'club',
             'league',
