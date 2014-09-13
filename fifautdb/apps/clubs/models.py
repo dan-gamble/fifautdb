@@ -1,9 +1,5 @@
-# Core imports
+from django.core.urlresolvers import reverse
 from django.db import models
-from django.utils.functional import cached_property
-
-# Local imports
-from players.models import Player
 
 
 class Club(models.Model):
@@ -87,11 +83,8 @@ class Club(models.Model):
         null=True
     )
 
-    @models.permalink
     def get_absolute_url(self):
-        return 'clubs:club', (), {
-            'slug': self.slug
-        }
+        return reverse('club', args=[self.slug])
 
     class Meta:
         db_table = 'clubs_14'

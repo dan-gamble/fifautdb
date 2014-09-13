@@ -109,6 +109,7 @@ LOCAL_APPS = (
     'leagues',
     'nations',
     'news',
+    'profile',
     'players',
 )
 

@@ -31,20 +31,3 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "fifautdb.settings.production")
 # setting points here.
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
-
-# Apply WSGI middleware here.
-# from helloworld.wsgi import HelloWorldApplication
-# application = HelloWorldApplication(application)
-
-from dj_static import Cling
-
-application = Cling(get_wsgi_application())
-
-import newrelic.agent
-
-newrelic.agent.initialize(SITE_ROOT + '/newrelic.ini')
-
-from django.core.wsgi import get_wsgi_application
-
-application = get_wsgi_application()
-application = newrelic.agent.wsgi_application()(application)
